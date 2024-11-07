@@ -49,3 +49,15 @@ package.json
 /man/
 /share/
 /src/
+
+__pycache__/
+.DS_Store
+db/
+odoo.conf
+filestore/
+venv/
+.venv/
+.idea/
+sessions/
+
+odoo/addons/

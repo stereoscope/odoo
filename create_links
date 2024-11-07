@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Usage function to display help
+usage() {
+  echo "Usage: $0 --create target_dir source_dir1 [source_dir2 ...]"
+  echo "       $0 --delete target_dir"
+}
+
+# Check minimum number of arguments
+if [ $# -lt 2 ]; then
+  usage
+  exit 1
+fi
+
+# Command mode (--create or --delete)
+mode=$1
+shift
+
+# Pfad zum Zielverzeichnis
+target_dir="$1"
+
+# Entfernen Sie den abschließenden /, wenn vorhanden
+target_dir="${target_dir%/}"
+
+case $mode in
+  --create)
+    # Check if at least one source directory is provided
+    if [ $# -lt 2 ]; then
+      echo "Error: No source directories provided."
+      usage
+      exit 1
+    fi
+
+    # Löschen Sie alle vorhandenen symbolischen Links im Zielverzeichnis
+    find "$target_dir" -type l -exec rm -f {} \;
+
+    # Verschieben Sie den Parameterindex um eins, damit die Quellverzeichnisse beginnen
+    shift
+
+    # Für jedes als Parameter übergebene Verzeichnis
+    for source_dir in "$@"; do
+      # Entfernen Sie den abschließenden /, wenn vorhanden
+      source_dir="${source_dir%/}"
+
+      # Für jedes Verzeichnis im Quellverzeichnis
+      for dir in "$source_dir"/*; do
+        # Überprüfen, ob es sich um ein Verzeichnis handelt
+        if [ -d "$dir" ]; then
+          # Ausgabe des ln -s Befehls mit dem relativen Pfad
+          ln -s ../../$source_dir/$(basename $dir) $target_dir/$(basename $dir)
+        fi
+      done
+    done
+    ;;
+  --delete)
+    # Löschen Sie alle vorhandenen symbolischen Links im Zielverzeichnis
+    find "$target_dir" -type l -exec rm -f {} \;
+    ;;
+  *)
+    echo "Invalid option: $mode"
+    usage
+    exit 1
+    ;;
+esac

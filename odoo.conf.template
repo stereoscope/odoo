@@ -1,0 +1,13 @@
+[options]
+admin_passwd = $pbkdf2-sha512$25000$XOs9h9Aa4/zfm1Pq/V8rxQ$46QHULA/BwzjYoxHkSCL3A30wv59sL/8nd8PqIJco1ZOrPJ2qOKAEEivLnOr19QHhC8lWvJrDOJ2VDS/e0uIZA
+db_host = localhost
+db_port = 5432
+db_user = fritz
+db_password =
+db_name =
+addons_path = ./odoo/addons,
+http_port = 8069
+cpu_time_limit = 15000
+data_dir = ./filestore
+limit_time_real = 100000
+limit_time_cpu = 100000

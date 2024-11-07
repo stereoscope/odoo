@@ -1,0 +1,10 @@
+[submodule "libs/addons-dp"]
+	path = libs/addons-dp
+	url = git@github.com:datenpol/odoosh-gaschler.git
+[submodule "libs/addons-custom"]
+	path = libs/addons-custom
+	url = git@github.com:stereoscope/odoo_addons.git
+[submodule "libs/addons-enterprise"]
+	path = libs/addons-enterprise
+	url = git@github.com:odoo/enterprise.git
+	branch = 16.0
