@@ -48,6 +48,7 @@ _ref_vat = {
     'gr': 'EL123456783',
     'hu': _('HU12345676 or 12345678-1-11 or 8071592153'),
     'hr': 'HR01234567896',  # Croatia, contributed by Milan Tribuson
+    'id': '1234567890123456',
     'ie': 'IE1234567FA',
     'il': _('XXXXXXXXX [9 digits] and it should respect the Luhn algorithm checksum'),
     'in': "12AAAAA1234AAZA",
@@ -73,7 +74,8 @@ _ref_vat = {
     'si': 'SI12345679',
     'sk': 'SK2022749619',
     'sm': 'SM24165',
-    'tr': _('TR1234567890 (VERGINO) or TR17291716060 (TCKIMLIKNO)'),  # Levent Karakas @ Eska Yazilim A.S.
+    'tr': _('17291716060 (NIN) or 1729171602 (VKN)'),
+    'uy': _("Example: '219999830019' (format: 12 digits, all numbers, valid check digit)"),
     've': 'V-12345678-1, V123456781, V-12.345.678-1',
     'xi': 'XI123456782',
     'sa': _('310175397400003 [Fifteen digits, first and last digits should be "3"]')
@@ -124,6 +126,37 @@ class ResPartner(models.Model):
         # (e.g. service unavailable), the fallback on simple_vat_check is not kept in cache.
         _logger.info('Calling VIES service to check VAT for validation: %s', vat)
         return check_vies(vat)
+
+    def check_vat_uy(self, vat):
+        """  Taken from python-stdnum's master branch, as the release doesn't handle RUT numbers starting with 22.
+        origin https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/uy/rut.py
+        FIXME Can be removed when python-stdnum does a new release. """
+
+        def compact(number):
+            """Convert the number to its minimal representation."""
+            number = clean(number, ' -').upper().strip()
+            if number.startswith('UY'):
+                return number[2:]
+            return number
+
+        def calc_check_digit(number):
+            """Calculate the check digit."""
+            weights = (4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2)
+            total = sum(int(n) * w for w, n in zip(weights, number))
+            return str(-total % 11)
+
+        vat = compact(vat)
+
+        if (
+            not vat.isdigit() or  # InvalidFormat
+            len(vat) != 12 or  # InvalidLength
+            vat[:2] < '01' or vat[:2] > '22' or  # InvalidComponent
+            vat[2:8] == '000000' or
+            vat[8:11] != '001' or
+            vat[-1] != calc_check_digit(vat)):  # Invalid Check Digit
+            return False
+
+        return True
 
     @api.model
     def vies_vat_check(self, country_code, vat_number):
@@ -544,48 +577,9 @@ class ResPartner(models.Model):
                 return False
         return True
 
-    # VAT validation in Turkey, contributed by # Levent Karakas @ Eska Yazilim A.S.
+    # VAT validation in Turkey
     def check_vat_tr(self, vat):
-
-        if not (10 <= len(vat) <= 11):
-            return False
-        try:
-            int(vat)
-        except ValueError:
-            return False
-
-        # check vat number (vergi no)
-        if len(vat) == 10:
-            sum = 0
-            check = 0
-            for f in range(0, 9):
-                c1 = (int(vat[f]) + (9-f)) % 10
-                c2 = (c1 * (2 ** (9-f))) % 9
-                if (c1 != 0) and (c2 == 0):
-                    c2 = 9
-                sum += c2
-            if sum % 10 == 0:
-                check = 0
-            else:
-                check = 10 - (sum % 10)
-            return int(vat[9]) == check
-
-        # check personal id (tc kimlik no)
-        if len(vat) == 11:
-            c1a = 0
-            c1b = 0
-            c2 = 0
-            for f in range(0, 9, 2):
-                c1a += int(vat[f])
-            for f in range(1, 9, 2):
-                c1b += int(vat[f])
-            c1 = ((7 * c1a) - c1b) % 10
-            for f in range(0, 10):
-                c2 += int(vat[f])
-            c2 = c2 % 10
-            return int(vat[9]) == c1 and int(vat[10]) == c2
-
-        return False
+        return stdnum.util.get_cc_module('tr', 'tckimlik').is_valid(vat) or stdnum.util.get_cc_module('tr', 'vkn').is_valid(vat)
 
     __check_vat_sa_re = re.compile(r"^3[0-9]{13}3$")
 

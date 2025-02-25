@@ -29,7 +29,7 @@ class AccountMove(models.Model):
         :return:
         """
         self.ensure_one()
-        return self.partner_id.company_type == 'person'
+        return self.partner_id.company_type == 'person' and self.partner_id.country_code == 'SA'
 
     @api.depends('amount_total_signed', 'amount_tax_signed', 'l10n_sa_confirmation_datetime', 'company_id',
                  'company_id.vat', 'journal_id', 'journal_id.l10n_sa_production_csid_json', 'edi_document_ids',
@@ -209,6 +209,15 @@ class AccountMove(models.Model):
         """
         zatca_doc_ids = self.edi_document_ids.filtered(lambda d: d.edi_format_id.code == 'sa_zatca')
         return len(zatca_doc_ids) > 0 and not any(zatca_doc_ids.filtered(lambda d: d.state == 'to_send'))
+
+    def _get_tax_lines_to_aggregate(self):
+        """
+        If the final invoice has downpayment lines, we skip the tax correction, as we need to recalculate tax amounts
+        without taking into account those lines
+        """
+        if self.country_code == 'SA' and not self._is_downpayment() and self.line_ids._get_downpayment_lines():
+            return self.env['account.move.line']
+        return super()._get_tax_lines_to_aggregate()
 
 
 class AccountMoveLine(models.Model):
