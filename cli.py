@@ -196,11 +196,11 @@ def main():
     install_parser.set_defaults(func=execute_command)
 
     # List Module Subcommand
-    install_parser = subparsers.add_parser("list-modules", help="Update an Odoo module")
+    install_parser = subparsers.add_parser("list-modules", help="List Odoo modules")
     install_parser.set_defaults(func=execute_command)
 
     # Update Module Subcommand
-    install_parser = subparsers.add_parser("show-module", help="Update an Odoo module")
+    install_parser = subparsers.add_parser("show-module", help="Show information about an Odoo module")
     install_parser.add_argument("module_name", help="Name of the module for that information shall be displayed")
     install_parser.set_defaults(func=execute_command)
 
