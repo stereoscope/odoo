@@ -4,8 +4,22 @@ import shutil
 
 import logging
 import sys
-import os
 import subprocess
+import os
+from getpass import getpass
+
+# Ensure dependencies are installed
+REQUIRED_PACKAGES = ["tabulate"]
+
+def ensure_dependencies():
+    for pkg in REQUIRED_PACKAGES:
+        try:
+            __import__(pkg)
+        except ImportError:
+            print(f"⚠️ Missing package '{pkg}', installing it now...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", pkg])
+
+ensure_dependencies()
 from tabulate import tabulate
 
 # ------------------------------------------------------------------------------
@@ -55,13 +69,9 @@ logger.info("✅ Logging system initialized.")
 # Database Restorer
 # ------------------------------------------------------------------------------
 class DatabaseRestorer:
-    """
-    Restores an Odoo database from a given dump file.
-    Drops + re-creates the database and user role as specified.
-    """
     def __init__(self, dump_file, pg_user=None, db_name="odoo", db_user="odoo", db_pass="odoo"):
         self.dump_file = dump_file
-        self.pg_user = pg_user or os.getlogin()   # system user if none provided
+        self.pg_user = pg_user or os.getenv('PGUSER') or getpass.getuser()
         self.db_name = db_name
         self.db_user = db_user
         self.db_pass = db_pass

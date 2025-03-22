@@ -1,1 +1,1 @@
-python cli.py restore --path-to-dump ./db/dump.sql --db-user fritz && python cli.py modify-user -u friedrich@gaschler.at -p test --disable-2fa
+python cli.py restore-db --path-to-dump ./db/dump.sql --db-user fritz && python cli.py modify-user -u friedrich@gaschler.at -p test --disable-2fa
