@@ -187,6 +187,21 @@ class ModuleManager:
     def __init__(self, env):
         self.env = env
 
+    def update_modules(self, module_names):
+        """Aktualisiere Modul"""
+
+        mod_ids = []
+        for module_name in module_names:
+            mod_id = self.odoo.env['ir.module.module'].search([('name', '=', module_name), ('state', '=', 'installed')])
+            if not mod_ids:
+                logger.error(f"❌ Module '{module_name}' not found or not installed.")
+                continue
+            mod_ids += mod_id
+
+        self.odoo.env['ir.module.module'].button_upgrade(mod_ids)
+        self.odoo.env['base.module.upgrade'].upgrade_module([])
+        return True
+
     def uninstall_modules(self, module_names):
         """Uninstall multiple Odoo modules."""
         for module_name in module_names:
@@ -411,6 +426,10 @@ def main():
 
     # uninstall-module
     uninstall_parser = subparsers.add_parser("uninstall-module", help="Uninstall one or more Odoo modules")
+    uninstall_parser.add_argument("module_names", nargs='+', help="Names of the modules to uninstall")
+
+    # update-module
+    uninstall_parser = subparsers.add_parser("update-module", help="update one or more Odoo modules")
     uninstall_parser.add_argument("module_names", nargs='+', help="Names of the modules to uninstall")
 
     # list-modules
