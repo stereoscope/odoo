@@ -11,3 +11,4 @@ elif system == 'Linux':
     subprocess.run(["python", "cli.py", "restore-db", "--path-to-dump", "./db/dump.sql", "--db-user", "postgres"])
 
 subprocess.run(["python", "cli.py", "modify-user", "-u", "friedrich@gaschler.at", "-p", "test", "--disable-2fa"])
+
