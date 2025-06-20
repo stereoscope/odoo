@@ -6,7 +6,7 @@ import subprocess
 system = platform.system()
 
 if system == 'Darwin':  # Note: platform.system() returns 'Darwin' on macOS
-    subprocess.run(["python", "cli.py", "restore-db", "--path-to-dump", "./db/dump.sql", "--db-user", "fritz"])
+    subprocess.run(["python", "cli.py", "restore-db", "--path-to-dump", "./db/dump.sql", "--db-user", "odoo"])
 elif system == 'Linux':
     subprocess.run(["python", "cli.py", "restore-db", "--path-to-dump", "./db/dump.sql", "--db-user", "postgres"])
 
