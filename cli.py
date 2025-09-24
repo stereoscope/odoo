@@ -528,10 +528,6 @@ def main():
     uninstall_parser = subparsers.add_parser("uninstall-module", help="Uninstall one or more Odoo modules")
     uninstall_parser.add_argument("module_names", nargs='+', help="Names of the modules to uninstall")
 
-    # update-module
-    uninstall_parser = subparsers.add_parser("update-module", help="update one or more Odoo modules")
-    uninstall_parser.add_argument("module_names", nargs='+', help="Names of the modules to uninstall")
-
     # list-modules
     list_parser = subparsers.add_parser("list-modules", help="List Odoo modules")
 
