@@ -24,6 +24,7 @@ odoo/filestore
 odoo/addons/base/maintenance
 # windows installation config file
 /odoo.conf
+/odoo_19.conf
 
 # generated for windows installer?
 install/win32/*.bat
@@ -51,3 +52,5 @@ package.json
 /man/
 /share/
 /src/
+/data
+odoo_cli.log
