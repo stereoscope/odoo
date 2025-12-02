@@ -413,10 +413,16 @@ class Website(models.Model):
     @api.constrains('domain')
     def _check_domain(self):
         for record in self:
+            if not record.domain:
+                continue
+
             try:
-                urlparse(record.domain)
+                parsed = urlparse(record.domain)
             except ValueError:
                 raise ValidationError(_("The provided website domain is not a valid URL."))
+
+            if tools.urls._contains_dot_segments(parsed.path):
+                raise ValidationError(_("The domain path cannot contain relative path segments like '/./' or '/../'."))
 
     @api.constrains('homepage_url')
     def _check_homepage_url(self):
@@ -1565,7 +1571,9 @@ class Website(models.Model):
             record = {'loc': page['url'], 'id': page['id'], 'name': page['name']}
             if page.view_id.priority != 16:
                 record['priority'] = min(round(page.view_id.priority / 32.0, 1), 1)
-            record['lastmod'] = max(page.write_date, page.view_write_date).date()
+            last_dates = [d for d in (page.write_date, page.view_write_date) if d]
+            if last_dates:
+                record['lastmod'] = max(last_dates).date()
             yield record
 
         # ==== CONTROLLERS ====

@@ -170,7 +170,7 @@ test("LinkPopover opens in full composer", async () => {
     await waitFor(".odoo-editor-editable");
     htmlEditor.editable.focus();
     await insertText(htmlEditor, "test");
-    const node = queryOne(".odoo-editor-editable div.o-paragraph");
+    const node = queryOne(".odoo-editor-editable div");
     setSelection({ anchorNode: node, anchorOffset: 0, focusNode: node, focusOffset: 1 });
     await mailClick(".o-we-toolbar .fa-link");
     await waitFor(".o-we-linkpopover");
@@ -240,4 +240,17 @@ test("link redirection should not be prefixed when the current page is not a web
     await click(".o-we-linkpopover a");
     // the open method should not be called from onClickForcePreviewMode
     expect.verifySteps([]);
+});
+
+test("Focus should be on label when adding a new URL", async () => {
+    const { editor } = await setupEditor("<p>ab[]</p>");
+    await insertText(editor, "/link");
+    await animationFrame();
+    expect(".active .o-we-command-name").toHaveText("Link");
+    await click(".o-we-command-name:first");
+    await animationFrame();
+    expect(".o-we-linkpopover").toHaveCount(1);
+    expect(".o-we-linkpopover input.o_we_label_link").toBeFocused({
+        message: "should focus label input by default",
+    });
 });

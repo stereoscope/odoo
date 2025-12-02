@@ -180,7 +180,7 @@ test("pointer is added on top of overlay's stack", async () => {
     registry.category("web_tour.tours").add("tour1", {
         steps: () => [
             { trigger: ".modal .a", run: "click" },
-            { trigger: ".btn-primary", run: "click" },
+            { trigger: ".modal .btn-close", run: "click" },
         ],
     });
     class DummyDialog extends Component {
@@ -214,7 +214,7 @@ test("pointer is added on top of overlay's stack", async () => {
     await animationFrame();
     expect(".o_tour_pointer").toHaveCount(1);
 
-    await click(".btn-primary");
+    await click(".modal .btn-close");
     await animationFrame();
     expect(".o_tour_pointer").toHaveCount(0);
 });
@@ -710,7 +710,7 @@ test("Tour backward when the pointed element disappear and ignore warn step", as
     registry.category("web_tour.tours").add("tour1", {
         steps: () => [
             { trigger: "button.foo", run: "click" },
-            { trigger: "button.bar" },
+            { trigger: "button.foo" },
             { trigger: "button.bar", run: "click" },
         ],
     });
@@ -747,7 +747,7 @@ test("Tour backward when the pointed element disappear and ignore warn step", as
     await contains("button.bar").click();
     await animationFrame();
     expect(".o_tour_pointer").toHaveCount(0);
-    expect.verifySteps(["Step 'button.bar' ignored.", "Step 'button.bar' ignored."]);
+    expect.verifySteps(["Step 'button.foo' ignored.", "Step 'button.foo' ignored."]);
 });
 
 test("Tour started by the URL", async () => {

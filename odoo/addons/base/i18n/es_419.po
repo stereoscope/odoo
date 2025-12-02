@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server saas~18.4+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-09 12:16+0000\n"
-"PO-Revision-Date: 2025-10-09 02:31+0000\n"
-"Last-Translator: \"Fernanda Alvarez (mfar)\" <mfar@odoo.com>\n"
+"PO-Revision-Date: 2025-11-24 15:36+0000\n"
+"Last-Translator: \"Patricia Gutiérrez (pagc)\" <pagc@odoo.com>\n"
 "Language-Team: Spanish (Latin America) <https://translate.odoo.com/projects/"
 "odoo-19/base/es_419/>\n"
 "Language: es_419\n"
@@ -674,6 +674,9 @@ msgid ""
 "\n"
 "Use iMin ePOS Printers without the IoT Box in the Point of Sale\n"
 msgstr ""
+"\n"
+"\n"
+"Usa las impresoras iMin ePOS sin la caja IoT en el punto de venta\n"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_eg_edi_eta
@@ -840,6 +843,8 @@ msgid ""
 "\n"
 "* Add export of IVA Simple Tax Report.\n"
 msgstr ""
+"\n"
+"* Agrega la exportación del reporte de IVA simple.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_ai_app
@@ -914,6 +919,9 @@ msgid ""
 "\n"
 "- Send and receive documents via Nemhandel network in OIOUBL 2.1 format\n"
 msgstr ""
+"\n"
+"- Envía y recibe documentos a través de la red Nemhandel en formato OIOUBL "
+"2.1.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_auth_totp_mail
@@ -1596,7 +1604,7 @@ msgid ""
 "Accounting Fleet Bridge\n"
 msgstr ""
 "\n"
-"Enlace entre Flota y Contabilidad\n"
+"Enlace entre Flotilla y Contabilidad\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_base_import
@@ -2673,6 +2681,8 @@ msgid ""
 "\n"
 "Accounting returns for Sweden\n"
 msgstr ""
+"\n"
+"Declaraciones para Suecia\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mrp_subcontracting_account_enterprise
@@ -3062,7 +3072,7 @@ msgid ""
 "Adds fleet data to documents\n"
 msgstr ""
 "\n"
-"Agrega datos de flota a los documentos\n"
+"Agrega datos de Flotilla a los documentos\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_quality_repair
@@ -3133,19 +3143,19 @@ msgid ""
 "* Supported cards: Visa, MasterCard, RuPay.\n"
 msgstr ""
 "\n"
-"Permita pagos con el PdV de Pine Labs\n"
+"Acepta pagos con Pine Labs en PdV \n"
 "==============================\n"
 "\n"
-"Este módulo solo está disponible para empresas que usan la moneda INR.\n"
+"Este módulo solo está disponible para las empresas que usan la moneda INR.\n"
 "Con este módulo, los clientes podrán pagar sus órdenes usando tarjetas de "
-"débito o crédito y la UPI a través de las terminales de pago de Pine Labs "
-"POS.\n"
-"Se necesita una cuenta de comerciante de Pine Labs para poder procesar las "
+"débito o crédito y UPI a través de las terminales de Pine Labs para puntos "
+"de venta.\n"
+"Necesitas una cuenta de comerciante de Pine Labs para poder procesar las "
 "transacciones.\n"
 "Las funciones incluyen:\n"
 "\n"
-"* Pagos rápidos al deslizar, escanear o tocar la tarjeta de débito o crédito "
-"y el código QR UPI en la terminal de pago.\n"
+"* Pagos rápidos al deslizar, escanear o acercar una tarjeta de débito o "
+"crédito y el código QR UPI en la terminal de pago.\n"
 "* Tarjetas compatibles: Visa, MasterCard, RuPay.\n"
 
 #. module: base
@@ -3939,6 +3949,57 @@ msgid ""
 "- Configuration note: The .pfx certificate should be set on the payroll "
 "configuration.\n"
 msgstr ""
+"\n"
+"Declaraciones automáticas DIMONA\n"
+"=============================\n"
+"\n"
+"Requisitos previos:\n"
+"--------------\n"
+"\n"
+"- Necesitas un certificado digital conforme con el gobierno de Bélgica\n"
+"  emitido por Global Sign. Consulta: https://shop.globalsign.com/en/belgian-"
+"government-services\n"
+"\n"
+"- Genera los archivos de certificado desde tu certificado SSL (.pfx) "
+"necesarios para crear\n"
+"  un usuario técnico (.cer) y para autenticarte de forma remota con el ONSS "
+"(.pfx). En un sistema UNIX\n"
+"  puedes usar los siguientes comandos:\n"
+"\n"
+"  - PFX -> CRT: openssl pkcs12 -in my_cert.pfx -out my_cert.crt -nokeys -"
+"clcerts\n"
+"\n"
+"  - CRT -> CER: openssl x509 -inform pem -in my_cert.crt -outform der -out "
+"my_cert.cer\n"
+"\n"
+"- Antes de usar el servicio web REST de seguridad social, crea una cuenta\n"
+"  para ti o para tu cliente y configura la seguridad. (Toda la información\n"
+"  sobre el procedimiento está disponible en https://www.socialsecurity.be/"
+"site_fr/employer/applics/dimona/introduction/webservice.htm)\n"
+"\n"
+"  - Gestión de cuentas de usuario: Sigue el procedimiento de https://"
+"www.socialsecurity.be/site_fr/general/helpcentre/rest/documents/pdf/"
+"procedure_pour_gestion_des_acces_UMan_FR.pdf\n"
+"\n"
+"  - Creación de un usuario técnico: Tu cliente debe crear un usuario técnico "
+"en el servicio en línea de gestión de accesos\n"
+"    Sigue el procedimiento de https://www.socialsecurity.be/site_fr/general/"
+"helpcentre/rest/documents/pdf/webservices_creer_le_canal_FR.pdf\n"
+"\n"
+"  - Activación de un canal de servicio web: Una vez creado el usuario "
+"técnico, tu cliente debe\n"
+"    activar el canal del servicio web en la gestión de accesos. Este manual "
+"explica\n"
+"    los pasos a seguir: https://www.socialsecurity.be/site_fr/general/"
+"helpcentre/rest/documents/pdf/webservices_ajouter_le_canal_FR.pdf\n"
+"\n"
+"  - Al final del procedimiento recibirás el \"Número de expedidor ONSS\". "
+"Ingresa\n"
+"    este número en los ajustes de nómina junto con el archivo .pem y la "
+"contraseña correspondiente, si aplica.\n"
+"\n"
+"- Nota de configuración: El certificado .pfx debe definirse en la "
+"configuración de nómina.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mrp_accountant
@@ -5577,7 +5638,7 @@ msgid ""
 "Disallowed Expenses Fleet Data for Belgium\n"
 msgstr ""
 "\n"
-"Datos de gastos rechazados de Flota para Bélgica\n"
+"Datos de gastos rechazados de Flotilla para Bélgica\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_helpdesk_fsm_report
@@ -8697,6 +8758,9 @@ msgid ""
 "Manage the inventory of your Kit products and display their availability "
 "status in your eCommerce store.\n"
 msgstr ""
+"\n"
+"Gestiona el inventario de tus productos en kit y muestra su disponibilidad "
+"en tu tienda de comercio electrónico.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale_stock
@@ -10492,6 +10556,18 @@ msgid ""
 "- Withholding Return\n"
 "- Fiscal Positions\n"
 msgstr ""
+"\n"
+"Módulo de contabilidad para Arabia Saudita\n"
+"===========================================================\n"
+"Planes de cuenta básicos y localización para Arabia Saudita\n"
+"\n"
+"Activa:\n"
+"\n"
+"- Plan de cuentas\n"
+"- Impuestos\n"
+"- Declaración fiscal\n"
+"- Declaración de retenciones\n"
+"- Posiciones fiscales\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_sa_pos
@@ -10540,6 +10616,10 @@ msgid ""
 "\n"
 "Force the installation of the Withholding Tax on Payment module\n"
 msgstr ""
+"\n"
+"Módulo de retención de impuestos para Arabia Saudita\n"
+"\n"
+"Fuerza la instalación del módulo de retención de impuestos en pagos\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_project_forecast
@@ -15354,20 +15434,19 @@ msgstr ""
 "\n"
 "Vehículos, arrendamiento, seguros y costos\n"
 "==================================\n"
-"Este módulo de Odoo le ayudará a gestionar todos sus vehículos, los\n"
-"contratos asociados a esos vehículos, así como los servicios, costos\n"
-"y muchas otras funciones que son necesarias para gestionar su flota\n"
+"Este módulo de Odoo te ayudará a gestionar todos tus vehículos, los\n"
+"contratos asociados a cada uno de ellos y los servicios, costos\n"
+"y muchas otras funciones necesarias para gestionar tu flotilla\n"
 "de vehículos.\n"
 "\n"
 "Funciones principales\n"
 "-------------\n"
-"* Agregue vehículos a su flota.\n"
-"* Gestione los contratos de sus vehículos.\n"
-"* Reciba un recordatorio cuando la fecha de vencimiento de un contrato se "
-"aproxime.\n"
-"* Agregue los servicios y los valores de odómetro para todos sus vehículos.\n"
-"* Muestra todos los costos asociados a un vehículo o a un tipo de servicio.\n"
-"* Gráfico de análisis de costos.\n"
+"* Agrega vehículos a tu flotilla\n"
+"* Gestiona los contratos de los vehículos\n"
+"* Recibe recordatorios cuando un contrato llegue a su fecha de vencimiento\n"
+"* Agrega los servicios y valores del odómetro para todos los vehículos\n"
+"* Muestra todos los costos asociados a un vehículo o a un tipo de servicio\n"
+"* Consulta los gráficos de análisis de costos\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_vn_edi_viettel
@@ -15903,7 +15982,7 @@ msgstr "Retroalimentación 360"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_3pl_logistic_company
 msgid "3PL Logistic Company"
-msgstr ""
+msgstr "Empresa logística externa"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_external_tax
@@ -16106,6 +16185,10 @@ msgid ""
 "                                    <i class=\"fa fa-fw fa-key text-"
 "primary\" title=\"Login\" invisible=\"login == email\"/>"
 msgstr ""
+"<i class=\"fa fa-fw fa-envelope text-primary\" title="
+"\"Inicia sesión / Correo\" invisible=\"login != email\"/>\n"
+"                                    <i class=\"fa fa-fw fa-key text-primary\""
+" title=\"Inicia sesión\" invisible=\"login == email\"/>"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_users_form
@@ -17302,7 +17385,7 @@ msgstr "Contabilidad - Gastos"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_accountant_fleet
 msgid "Accounting - Fleet"
-msgstr "Contabilidad - Flota"
+msgstr "Contabilidad - Flotilla"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mrp_account
@@ -17391,7 +17474,7 @@ msgstr "Reportes contables para Brasil"
 #: model:ir.module.module,shortdesc:base.module_account_accountant_fleet
 #: model:ir.module.module,shortdesc:base.module_account_fleet
 msgid "Accounting/Fleet bridge"
-msgstr "Enlace entre Flota y Contabilidad"
+msgstr "Enlace entre Flotilla y Contabilidad"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_act_window_view__act_window_id
@@ -20224,7 +20307,7 @@ msgstr "Argentina - Inventario"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_ar_reports_simple
 msgid "Argentinean Accounting IVA Simple Export"
-msgstr ""
+msgstr "Exportación de IVA simple para contabilidad argentina"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_ar_reports
@@ -20820,7 +20903,7 @@ msgstr "Gestión de activos"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_asset_fleet
 msgid "Assets/Fleet bridge"
-msgstr "Enlace entre activos y flota"
+msgstr "Enlace entre activos y Flotilla"
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_partner_category_form
@@ -21966,7 +22049,7 @@ msgstr "Bélgica - Reportes contables - SMS"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_fiscal_categories_fleet
 msgid "Belgium - Disallowed Expenses Fleet"
-msgstr "Bélgica - Gastos rechazados en Flota"
+msgstr "Bélgica - Gastos rechazados en Flotilla"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_fiscal_categories
@@ -21996,7 +22079,7 @@ msgstr "Bélgica - Nómina - Dimona"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_hr_payroll_dimona_auto
 msgid "Belgium - Payroll - Dimona - Automation"
-msgstr ""
+msgstr "Bélgica - Nómina - Dimona - Automatización"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_hr_payroll_acerta
@@ -22031,7 +22114,7 @@ msgstr "Bélgica - Nómina - Exportar a UCM"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_hr_payroll_fleet
 msgid "Belgium - Payroll - Fleet"
-msgstr "Bélgica - Nómina - Flota"
+msgstr "Bélgica - Nómina - Flotilla"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_hr_payroll_account
@@ -23647,7 +23730,7 @@ msgstr "CodaBox"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_be_codaclean
 msgid "Codaclean"
-msgstr ""
+msgstr "codaclean"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_server_history__code
@@ -24214,6 +24297,7 @@ msgstr "Conecte el cliente web a los dispositivos periféricos"
 #: model:ir.module.module,description:base.module_l10n_be_codaclean
 msgid "Connect to Codaclean and automatically import CODA statements."
 msgstr ""
+"Conéctate con codaclean e importa los estados de cuenta CODA en automático."
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_gr_edi
@@ -24495,7 +24579,7 @@ msgstr "Corporativo, servicios, tecnología, formas, ilustrasiones"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_cosmetics_store
 msgid "Cosmetics Store"
-msgstr ""
+msgstr "Tienda de cosméticos"
 
 #. module: base
 #: model:res.country,name:base.cr
@@ -25285,7 +25369,7 @@ msgstr "Atajos personalizados"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_test_custo
 msgid "Custom Theme (Testing suite)"
-msgstr ""
+msgstr "Tema personalizado (entorno de prueba)"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_server__selection_value
@@ -25780,7 +25864,7 @@ msgstr "Tema del sitio web predeterminado"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_tax_python
 msgid "Define Taxes as Python Code"
-msgstr "Defina impuestos como código Python"
+msgstr "Definir impuestos como código Python"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.module_form
@@ -25948,7 +26032,7 @@ msgstr "Dinamarca - Importar SAF-T"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_dk_nemhandel
 msgid "Denmark EDI - Nemhandel"
-msgstr ""
+msgstr "EDI para Dinamarca - Nemhandel"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_fields__depends
@@ -26483,7 +26567,7 @@ msgstr "Documentos - Servicio externo"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_documents_fleet
 msgid "Documents - Fleet"
-msgstr "Documentos - Flota"
+msgstr "Documentos - Flotilla"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_documents_hr
@@ -26833,7 +26917,7 @@ msgstr "ESG y RR. HH."
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_esg_hr_fleet
 msgid "ESG HR Fleet"
-msgstr "ESG, RR. HH y Flota"
+msgstr "ESG, RR. HH. y Flotilla"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_esg_project
@@ -29132,7 +29216,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_fiscal_categories_fleet
 msgid "Fiscal Categories on Fleets"
-msgstr "Categorías fiscales en Flota"
+msgstr "Categorías fiscales en Flotilla"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_fitness
@@ -29154,17 +29238,17 @@ msgstr "Reportar URL de la imagen"
 #: model:ir.module.category,name:base.module_category_human_resources_fleet
 #: model:ir.module.module,shortdesc:base.module_fleet
 msgid "Fleet"
-msgstr "Flota"
+msgstr "Flotilla"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_fleet
 msgid "Fleet History"
-msgstr "Historial de la flota"
+msgstr "Historial de la flotilla"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_documents_fleet
 msgid "Fleet from documents"
-msgstr "Documentos de Flota"
+msgstr "Documentos de Flotilla"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_florist
@@ -29731,7 +29815,7 @@ msgstr "Ajustes generales"
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_mx_edi_landing
 msgid "Generate Electronic Invoice with custom numbers"
-msgstr "Genere facturas electrónicas con números personalizados"
+msgstr "Genera facturas electrónicas con números personalizados"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_crm_iap_mine
@@ -30239,7 +30323,7 @@ msgstr "Guernsey"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_guest_house
 msgid "Guest House"
-msgstr "Hostal"
+msgstr "Casa de huéspedes"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_guided_tours
@@ -30672,7 +30756,7 @@ msgstr "Historial"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_holiday_house
 msgid "Holiday House"
-msgstr "Casa de verano"
+msgstr "Casa vacacional"
 
 #. module: base
 #: model:res.country,name:base.va
@@ -30732,7 +30816,7 @@ msgstr "Hongkong"
 #. module: base
 #: model:ir.module.category,name:base.module_category_hospitaility
 msgid "Hospitaility"
-msgstr ""
+msgstr "Hospitalidad"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_hospitality
@@ -31054,7 +31138,7 @@ msgstr "Informática/Comunicación"
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_ar_reports_simple
 msgid "IVA Simple Reporting for Argentinean Localization"
-msgstr ""
+msgstr "Reporte simplificado de IVA para la localización argentina"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_iap_extract
@@ -32066,7 +32150,7 @@ msgstr "Integración"
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_payroll_fleet
 msgid "Integration between Payroll and Fleet."
-msgstr "Integración entre Nómina y Flota."
+msgstr "Integración entre Nómina y Flotilla."
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_it_pos
@@ -33000,7 +33084,7 @@ msgstr "Kiribati"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_sale_mrp
 msgid "Kit Availability"
-msgstr ""
+msgstr "Disponibilidad del kit"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_mrp_renting
@@ -33011,7 +33095,7 @@ msgstr "Alquiler de kits"
 #: model:ir.module.category,name:base.module_category_productivity_knowledge
 #: model:ir.module.module,shortdesc:base.module_knowledge
 msgid "Knowledge"
-msgstr "Información"
+msgstr "Artículos"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_knowledge
@@ -33651,7 +33735,7 @@ msgstr "Liberia"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_library
 msgid "Library"
-msgstr ""
+msgstr "Biblioteca"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_bookstore
@@ -33964,7 +34048,7 @@ msgstr "Tema Loftspace"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.ir_logging_form_view
 msgid "Log"
-msgstr "Registro"
+msgstr "Registrar"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_auth_passkey
@@ -34391,7 +34475,7 @@ msgstr "Gestione las integraciones de los portales de empleo con Sitio web"
 #. module: base
 #: model:ir.module.module,summary:base.module_website_sale_mrp
 msgid "Manage Kit product inventory & availability"
-msgstr ""
+msgstr "Gestiona el inventario y la disponibilidad de los productos de tipo kit"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_room
@@ -34529,12 +34613,12 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,summary:base.module_account_accountant_fleet
 msgid "Manage accounting with fleet features"
-msgstr "Gestione la contabilidad con funciones de Flota"
+msgstr "Gestiona la contabilidad con las funciones de Flotilla"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_account_fleet
 msgid "Manage accounting with fleets"
-msgstr "Gestione la contabilidad con Flota"
+msgstr "Gestiona la contabilidad con Flotilla"
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.grant_menu_access
@@ -34559,7 +34643,7 @@ msgstr "Gestione y publique en la plataforma de eLearning"
 #. module: base
 #: model:ir.module.module,summary:base.module_account_asset_fleet
 msgid "Manage assets with fleets"
-msgstr "Gestione activos con Flota"
+msgstr "Gestiona activos con Flotilla"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_certificate
@@ -34612,7 +34696,7 @@ msgstr "Gestione la contabilidad financiera y analítica"
 #. module: base
 #: model:ir.module.module,summary:base.module_account_fiscal_categories_fleet
 msgid "Manage fiscal categories with fleets"
-msgstr "Gestionar categorías fiscales con flotas"
+msgstr "Gestiona las categorías fiscales con Flotilla"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_sale_stock
@@ -34716,7 +34800,7 @@ msgstr "Gestione el horario de sus empleados"
 #. module: base
 #: model:ir.module.module,summary:base.module_fleet
 msgid "Manage your fleet and track car costs"
-msgstr "Gestione su flota y rastree los costos de los vehículos"
+msgstr "Gestiona tu flotilla y monitorea el costo de tus vehículos"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_mail_group
@@ -34986,8 +35070,8 @@ msgid ""
 "Measure fleet emissions based on your employees' commuting distance and "
 "vehicle data."
 msgstr ""
-"Mida las emisiones de su flota según la distancia de desplazamiento de sus "
-"empleados e información de su vehículo."
+"Mide las emisiones de la flotilla según la distancia de desplazamiento de "
+"tus empleados y los datos de los vehículos."
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_room
@@ -36262,7 +36346,7 @@ msgstr "Nigeria - Reportes de contabilidad"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_night_clubs
 msgid "Night Clubs"
-msgstr ""
+msgstr "Clubes nocturnos"
 
 #. module: base
 #: model:res.country,name:base.nu
@@ -36399,7 +36483,7 @@ msgstr "Ninguno"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_non_profit_organization
 msgid "Nonprofit organization"
-msgstr ""
+msgstr "Organización sin fines de lucro"
 
 #. module: base
 #: model:res.country,name:base.nf
@@ -37707,7 +37791,7 @@ msgstr "Exportación en XML de pólizas mexicanas de Odoo"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_mx_edi_landing
 msgid "Odoo Mexico Localization for Stock/Landing"
-msgstr "Localización mexicana de Odoo para las existencias y el embarque"
+msgstr "Localización mexicana de Odoo para existencias y pedimentos"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_web_mobile
@@ -40000,7 +40084,7 @@ msgstr "PdV - UrbanPiper - Uber Eats"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_pos_imin
 msgid "POS iMin"
-msgstr ""
+msgstr "POS iMin"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_partner__tz__prc
@@ -40752,7 +40836,7 @@ msgstr "Nómina - Asistencias"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_payroll_fleet
 msgid "Payroll - Fleet"
-msgstr "Nómina - Flota"
+msgstr "Nómina - Flotilla"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_payroll_planning
@@ -43138,7 +43222,7 @@ msgstr "Rol / Público"
 #. module: base
 #: model:res.groups,name:base.group_user
 msgid "Role / User"
-msgstr ""
+msgstr "Rol / Usuario"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_users_form
@@ -43925,7 +44009,7 @@ msgstr "Arabia Saudita - Punto de venta"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_sa_withholding_tax
 msgid "Saudi Arabia - Withholding Tax"
-msgstr ""
+msgstr "Arabia Saudita - Retención de impuestos"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_report__attachment
@@ -45260,7 +45344,7 @@ msgstr "Sudán del Sur"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_spa_resort
 msgid "Spa Resort"
-msgstr ""
+msgstr "Resort de spa"
 
 #. module: base
 #. odoo-python
@@ -46076,7 +46160,7 @@ msgstr "Suecia -  Reportes contables"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_se_returns
 msgid "Sweden - Accounting Returns"
-msgstr ""
+msgstr "Suecia - Declaraciones contables"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_se_sie4_export
@@ -46755,7 +46839,7 @@ msgstr "Envíe mensajes de WhatsApp a sus contactos"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_textile_manufacturing
 msgid "Textile Manufacturing"
-msgstr ""
+msgstr "Manufactura textil"
 
 #. module: base
 #: model:res.country,name:base.th
@@ -47658,7 +47742,7 @@ msgstr "Tienda de temas"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_themes
 msgid "Themes Testing Module"
-msgstr ""
+msgstr "Módulo para probar temas"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
@@ -48355,7 +48439,7 @@ msgstr "Este módulo se utiliza para la sincronización en línea con el banco."
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_dk_nemhandel
 msgid "This module is used to send/receive documents with Nemhandel"
-msgstr ""
+msgstr "Este módulo se usa para enviar y recibir documentos con Nemhandel"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_account_peppol
@@ -48393,6 +48477,10 @@ msgid ""
 "every\n"
 "    theme on one website."
 msgstr ""
+"Este módulo te ayudará a probar todos los temas de Odoo con rapidez\n"
+"    sin que tengas que cambiarlo en tu sitio web.\n"
+"    Creará un nuevo sitio web para cada tema de Odoo e instalará \n"
+"    todos los temas en un sitio web."
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_upgrade
@@ -48444,7 +48532,7 @@ msgstr "Separador de millares"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_thrift_store
 msgid "Thrift Store"
-msgstr ""
+msgstr "Tienda de segunda mano"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_lang__week_start__4
@@ -48475,7 +48563,7 @@ msgstr "Formato de hora"
 #: model:ir.module.category,name:base.module_category_human_resources_time_off
 #: model:ir.module.module,shortdesc:base.module_hr_holidays
 msgid "Time Off"
-msgstr "Tiempo personal"
+msgstr "Vacaciones"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_payroll_holidays
@@ -48529,7 +48617,7 @@ msgstr "Hojas de horas durante tiempo personal"
 #: model:ir.module.category,name:base.module_category_services_timesheets
 #: model:ir.module.module,shortdesc:base.module_timesheet_grid
 msgid "Timesheets"
-msgstr "Hojas de horas"
+msgstr "Registro de horas"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_timesheet_grid_holidays
@@ -48835,7 +48923,9 @@ msgstr "Traducciones"
 #. module: base
 #: model:ir.module.module,description:base.module_stock_fleet
 msgid "Transport Management: organize packs in your fleet, or carriers."
-msgstr "Gestión de transporte: organizar paquetes en su flota o repartidores."
+msgstr ""
+"Gestión de transporte: Organiza los paquetes en tu flotilla o con los "
+"transportistas."
 
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_H
@@ -49818,7 +49908,7 @@ msgstr "Use código Python para definir impuestos"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_sequence__use_date_range
 msgid "Use subsequences per date_range"
-msgstr "Use subsecuencias por date_range"
+msgstr "Usar subsecuencias por date_range"
 
 #. module: base
 #: model:ir.module.module,description:base.module_hr_gamification
@@ -50241,7 +50331,7 @@ msgstr "Barra vertical"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_veterinary_clinic
 msgid "Veterinary Clinic"
-msgstr ""
+msgstr "Clínica veterinaria"
 
 #. module: base
 #: model:res.country,name:base.vn
@@ -51952,7 +52042,7 @@ msgstr "eLearning"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_elearning_platform
 msgid "eLearning Platform"
-msgstr ""
+msgstr "Plataforma de eLearning"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_services_expenses
@@ -52027,7 +52117,7 @@ msgstr "html_value"
 #. module: base
 #: model:ir.module.module,summary:base.module_pos_imin
 msgid "iMin ePOS Printers in PoS"
-msgstr ""
+msgstr "Impresoras iMin ePOS en PdV"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_filters__embedded_parent_res_id

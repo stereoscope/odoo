@@ -283,7 +283,7 @@ class TestUiTranslate(odoo.tests.HttpCase):
             'language_ids': [(6, 0, [self.env.ref('base.lang_en').id, parseltongue.id])],
             'default_lang_id': parseltongue.id,
         })
-        self.env['website'].create({
+        website_3 = self.env['website'].create({
             'name': 'website fu_GB',
             'language_ids': [Command.set([fake_user_lang.id])],
             'default_lang_id': fake_user_lang.id,
@@ -291,7 +291,9 @@ class TestUiTranslate(odoo.tests.HttpCase):
 
         self.start_tour(f"/website/force/{website.id}", 'snippet_translation', login='admin')
         self.start_tour(f"/website/force/{website_2.id}", 'snippet_translation_changing_lang', login='admin')
-        self.start_tour(f"/website/force/{website_2.id}", 'snippet_translation_switching_website', login='admin')
+        self.start_tour(f"/website/force/{website_2.id}", 'snippet_translation_switching_website', login='admin', cookies={
+            'websiteIdMapping': json.dumps({website_3.name: website_3.id})
+        })
         self.start_tour(f"/website/force/{website.id}", 'snippet_dialog_rtl', login='admin')
 
 
@@ -687,3 +689,36 @@ class TestUi(HttpCaseWithWebsiteUser):
 
     def test_create_missing_page(self):
         self.start_tour("/", "create_missing_page", login="admin")
+
+    def test_hiding_sidebar_header(self):
+        self.start_tour("/", "hide_sidebar_header", login="admin")
+
+    def test_website_edit_megamenu_visibility(self):
+        self.start_tour("/", 'edit_megamenu_visibility', login='admin')
+
+    def test_alt_a_edit(self):
+        lang_en = self.env.ref('base.lang_en')
+        self.env.ref('website.default_website').write({
+            'default_lang_id': lang_en.id,
+            'language_ids': [Command.link(lang_en.id)],
+        })
+        self.start_tour('/', 'alt_a_edit', login='admin')
+
+    def add_fr_language_to_website(self):
+        lang_en = self.env.ref('base.lang_en')
+        lang_fr = self.env.ref('base.lang_fr')
+        self.env['res.lang']._activate_lang(lang_fr.code)
+        self.env.ref('website.default_website').write({
+            'default_lang_id': lang_en.id,
+            'language_ids': [Command.link(lang_en.id), Command.link(lang_fr.id)],
+        })
+
+    def test_alt_a_with_foreign_language(self):
+        self.add_fr_language_to_website()
+        self.start_tour('/', 'alt_a_translation', login='admin')
+
+    def test_alt_a_not_on_foreign_language_page(self):
+        self.add_fr_language_to_website()
+        # It should go in edit mode if we are not on the FR page even if FR is
+        # available
+        self.start_tour('/', 'alt_a_edit', login='admin')

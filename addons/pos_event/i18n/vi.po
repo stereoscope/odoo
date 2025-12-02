@@ -3,13 +3,15 @@
 # * pos_event
 #
 # "Dylan Kiss (dyki)" <dyki@odoo.com>, 2025.
+# "Thi Huong Nguyen (thng)" <thng@odoo.com>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-08 18:38+0000\n"
-"PO-Revision-Date: 2025-09-16 02:31+0000\n"
-"Last-Translator: \"Dylan Kiss (dyki)\" <dyki@odoo.com>\n"
+"POT-Creation-Date: 2025-11-07 18:36+0000\n"
+"PO-Revision-Date: 2025-11-08 17:56+0000\n"
+"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Vietnamese <https://translate.odoo.com/projects/odoo-19/"
 "pos_event/vi/>\n"
 "Language: vi\n"
@@ -23,7 +25,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/pos_event/static/src/app/components/popup/event_configurator_popup/event_configurator_popup.js:0
 msgid " for this slot"
-msgstr ""
+msgstr " cho chỗ này"
 
 #. module: pos_event
 #. odoo-javascript
@@ -47,7 +49,7 @@ msgstr "<i class=\"fa fa-file-pdf-o me-1\" aria-hidden=\"true\"/>In vé sự ki�
 #. module: pos_event
 #: model_terms:ir.ui.view,arch_db:pos_event.event_registration_ticket_view_form
 msgid "<span class=\"o_stat_text\">PoS Order</span>"
-msgstr ""
+msgstr "<span class=\"o_stat_text\">Đơn hàng PoS</span>"
 
 #. module: pos_event
 #: model:ir.model.fields,field_description:pos_event.field_pos_order__attendee_count
@@ -57,7 +59,7 @@ msgstr "Số người tham dự"
 #. module: pos_event
 #: model_terms:ir.ui.view,arch_db:pos_event.pos_order_form_view_inherit
 msgid "Attendees"
-msgstr "Người Tham dự"
+msgstr "Người tham dự"
 
 #. module: pos_event
 #. odoo-javascript
@@ -88,7 +90,7 @@ msgstr "Xác nhận"
 #: model:ir.model.fields,field_description:pos_event.field_pos_order_line__display_name
 #: model:ir.model.fields,field_description:pos_event.field_pos_session__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Tên hiển thị"
 
 #. module: pos_event
 #. odoo-javascript
@@ -131,7 +133,7 @@ msgstr "Đăng ký Sự kiện"
 #. module: pos_event
 #: model:ir.model,name:pos_event.model_event_slot
 msgid "Event Slot"
-msgstr ""
+msgstr "Chỗ sự kiện"
 
 #. module: pos_event
 #: model:ir.model,name:pos_event.model_event_event_ticket
@@ -152,12 +154,6 @@ msgstr "Sự kiện"
 
 #. module: pos_event
 #. odoo-javascript
-#: code:addons/pos_event/static/src/app/screens/product_screen/product_screen.js:0
-msgid "From %s"
-msgstr "Từ %s"
-
-#. module: pos_event
-#. odoo-javascript
 #: code:addons/pos_event/static/src/app/components/popup/event_registration_popup/event_registration_popup.xml:0
 msgid "Global questions"
 msgstr "Câu hỏi chung"
@@ -175,7 +171,7 @@ msgstr "Câu hỏi chung"
 #: model:ir.model.fields,field_description:pos_event.field_pos_order_line__id
 #: model:ir.model.fields,field_description:pos_event.field_pos_session__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: pos_event
 #. odoo-javascript
@@ -187,7 +183,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/pos_event/static/src/app/components/product_card/product_card.xml:0
 msgid "No slots"
-msgstr ""
+msgstr "Không còn chỗ"
 
 #. module: pos_event
 #: model:ir.model.fields,field_description:pos_event.field_event_event__image_1024
@@ -246,7 +242,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/pos_event/static/src/app/components/popup/event_configurator_popup/event_configurator_popup.js:0
 msgid "Select tickets for %(event)s"
-msgstr ""
+msgstr "Chọn vé cho %(event)s"
 
 #. module: pos_event
 #. odoo-javascript
@@ -259,7 +255,7 @@ msgstr ""
 #: code:addons/pos_event/static/src/app/components/popup/event_configurator_popup/event_configurator_popup.xml:0
 #: code:addons/pos_event/static/src/app/components/product_card/product_card.xml:0
 msgid "Sold out"
-msgstr ""
+msgstr "Hết hàng"
 
 #. module: pos_event
 #. odoo-javascript
@@ -318,10 +314,13 @@ msgstr "trái"
 #. odoo-javascript
 #: code:addons/pos_event/static/src/app/components/product_card/product_card.xml:0
 msgid "slot"
-msgstr ""
+msgstr "slot"
 
 #. module: pos_event
 #. odoo-javascript
 #: code:addons/pos_event/static/src/app/components/product_card/product_card.xml:0
 msgid "slots"
-msgstr ""
+msgstr "chỗ"
+
+#~ msgid "From %s"
+#~ msgstr "Từ %s"

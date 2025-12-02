@@ -3,13 +3,15 @@
 # * spreadsheet_dashboard
 #
 # "Dylan Kiss (dyki)" <dyki@odoo.com>, 2025.
+# "Kwanghee Park (kwpa)" <kwpa@odoo.com>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-08 18:39+0000\n"
-"PO-Revision-Date: 2025-09-16 04:45+0000\n"
-"Last-Translator: \"Dylan Kiss (dyki)\" <dyki@odoo.com>\n"
+"PO-Revision-Date: 2025-11-18 13:49+0000\n"
+"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Korean <https://translate.odoo.com/projects/odoo-19/"
 "spreadsheet_dashboard/ko/>\n"
 "Language: ko\n"
@@ -29,7 +31,7 @@ msgstr "%s (사본)"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar/dashboard_search_bar.js:0
 msgid "(no result)"
-msgstr ""
+msgstr "(결과 없음)"
 
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_share__access_token
@@ -62,7 +64,7 @@ msgstr "현황판 선택"
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__company_ids
 msgid "Companies"
-msgstr ""
+msgstr "회사"
 
 #. module: spreadsheet_dashboard
 #: model:ir.ui.menu,name:spreadsheet_dashboard.spreadsheet_dashboard_menu_configuration
@@ -134,18 +136,18 @@ msgstr "엑셀 내보내기"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_loader_service.js:0
 msgid "FAVORITES"
-msgstr ""
+msgstr "즐겨찾기"
 
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__favorite_user_ids
 msgid "Favorite Users"
-msgstr ""
+msgstr "즐겨찾기 사용자"
 
 #. module: spreadsheet_dashboard
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/pivot/clickable_cell.js:0
 msgid "Filter on this value"
-msgstr ""
+msgstr "해당 값의 필터"
 
 #. module: spreadsheet_dashboard
 #: model:spreadsheet.dashboard.group,name:spreadsheet_dashboard.spreadsheet_dashboard_group_finance
@@ -177,12 +179,12 @@ msgstr "ID"
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,help:spreadsheet_dashboard.field_spreadsheet_dashboard__is_favorite
 msgid "Indicates whether the dashboard is favorited by the current user"
-msgstr ""
+msgstr "현재 사용자가 현황판을 즐겨찾기에 추가했는지 여부를 나타냅니다."
 
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__is_favorite
 msgid "Is Favorite"
-msgstr ""
+msgstr "즐겨찾기 여부"
 
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__is_published
@@ -207,7 +209,7 @@ msgstr "최근 갱신 일자"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar/dashboard_search_bar.js:0
 msgid "Load more"
-msgstr ""
+msgstr "더 불러오기"
 
 #. module: spreadsheet_dashboard
 #. odoo-javascript
@@ -241,7 +243,7 @@ msgstr "이름"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar/dashboard_search_bar.js:0
 msgid "No"
-msgstr ""
+msgstr "아니요"
 
 #. module: spreadsheet_dashboard
 #. odoo-javascript
@@ -253,7 +255,7 @@ msgstr "사용 가능한 현황판 없음"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/list/clickable_cell.js:0
 msgid "Open record"
-msgstr ""
+msgstr "레코드 열기"
 
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_group__published_dashboard_ids
@@ -264,7 +266,7 @@ msgstr "게시된 현황판"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_facet/dashboard_facet.xml:0
 msgid "Remove"
-msgstr ""
+msgstr "제거"
 
 #. module: spreadsheet_dashboard
 #: model:spreadsheet.dashboard.group,name:spreadsheet_dashboard.spreadsheet_dashboard_group_sales
@@ -275,13 +277,13 @@ msgstr "판매"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar/dashboard_search_bar.xml:0
 msgid "Search..."
-msgstr ""
+msgstr "검색..."
 
 #. module: spreadsheet_dashboard
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/pivot/clickable_cell.js:0
 msgid "See records"
-msgstr ""
+msgstr "레코드 보기"
 
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard__sequence
@@ -332,7 +334,7 @@ msgstr "미리보기 이미지"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_action.xml:0
 msgid "Toggle favorite"
-msgstr ""
+msgstr "즐겨찾기 토글"
 
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,field_description:spreadsheet_dashboard.field_spreadsheet_dashboard_share__full_url
@@ -342,13 +344,13 @@ msgstr "URL"
 #. module: spreadsheet_dashboard
 #: model:ir.model.fields,help:spreadsheet_dashboard.field_spreadsheet_dashboard__favorite_user_ids
 msgid "Users who have favorited this dashboard"
-msgstr ""
+msgstr "이 현황판을 즐겨찾기에 추가한 사용자"
 
 #. module: spreadsheet_dashboard
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_form
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard.spreadsheet_dashboard_view_list
 msgid "Visible to all"
-msgstr ""
+msgstr "모든 사람에게 표시"
 
 #. module: spreadsheet_dashboard
 #: model:spreadsheet.dashboard.group,name:spreadsheet_dashboard.spreadsheet_dashboard_group_website
@@ -359,7 +361,7 @@ msgstr "웹사이트"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar/dashboard_search_bar.js:0
 msgid "Yes"
-msgstr ""
+msgstr "예"
 
 #. module: spreadsheet_dashboard
 #. odoo-python
@@ -377,7 +379,7 @@ msgstr "이 현황판에 액세스할 권한이 없습니다. "
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard/static/src/bundle/dashboard_action/dashboard_search_bar/dashboard_search_bar.js:0
 msgid "for"
-msgstr ""
+msgstr "대상"
 
 #~ msgid "Company"
 #~ msgstr "회사"

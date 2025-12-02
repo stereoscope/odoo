@@ -4,6 +4,7 @@ from datetime import datetime
 from freezegun import freeze_time
 from lxml import etree
 
+from odoo.exceptions import UserError
 from odoo.fields import Command
 from odoo.tests import Form, tagged
 from odoo.tools import file_open
@@ -680,6 +681,100 @@ class L10nMyEDITestFileGeneration(AccountTestInvoicingCommon):
             class_root,
             'cbc:ItemClassificationCode[@listID="CLASS"]',
             invoice.line_ids[0].l10n_my_edi_classification_code,
+        )
+
+    def test_15_none_tax(self):
+        invoice = self.init_invoice(
+            'out_invoice',
+            partner=self.partner_b,
+            products=self.product_a,
+            post=False,
+        )
+        invoice.invoice_line_ids.write({'tax_ids': [Command.clear()]})  # remove existing taxes
+        invoice.action_post()
+        myinvois_document = invoice._create_myinvois_document()
+        with self.assertRaises(UserError):
+            myinvois_document.action_generate_xml_file()
+
+    def test_16_original_document_id(self):
+        """
+        Ensure the original document id is present in the reversed document.
+        """
+        bill = self.init_invoice('in_invoice', products=self.product_a, post=True)
+        bill.ref = 'BILL-123'
+        myinvois_document = bill._create_myinvois_document()
+        bill_file, errors = myinvois_document._myinvois_generate_xml_file()
+        self.assertFalse(errors)
+
+        myinvois_document.write({
+            'myinvois_file_id': self.env['ir.attachment'].create({'name': 'test myinvois', 'raw': bill_file}).id,
+            'myinvois_state': 'valid',
+        })
+        bill.l10n_my_edi_document_ids |= myinvois_document
+
+        action = bill.action_reverse()
+        reversal_wizard = self.env[action['res_model']].with_context(
+            active_ids=bill.ids,
+            active_model='account.move',
+            default_journal_id=bill.journal_id.id,
+        ).create({})
+        action = reversal_wizard.reverse_moves()
+        credit_note = self.env['account.move'].browse(action['res_id'])
+        credit_note.action_post()
+
+        myinvois_document = credit_note._create_myinvois_document()
+        file, errors = myinvois_document._myinvois_generate_xml_file()
+        self.assertFalse(errors)
+
+        root = etree.fromstring(file)
+        self._assert_node_values(
+            root,
+            'cac:BillingReference/cac:InvoiceDocumentReference/cbc:ID',
+            'BILL-123',
+        )
+
+    def test_17_original_document_id_from_xml(self):
+        """
+        Ensure the original document id is present in the reversed document even if bill reference has changed after
+        sending.
+        """
+        bill = self.init_invoice('in_invoice', products=self.product_a, post=True)
+
+        # Set reference before generating e-invoice
+        bill.ref = 'Initial Reference'
+
+        # Generate e-invoice and mock values
+        myinvois_document = bill._create_myinvois_document()
+        bill_file, errors = myinvois_document._myinvois_generate_xml_file()
+        self.assertFalse(errors)
+
+        myinvois_document.write({
+            'myinvois_file_id': self.env['ir.attachment'].create({'name': 'test myinvois', 'raw': bill_file}).id,
+            'myinvois_state': 'valid',
+        })
+        bill.l10n_my_edi_document_ids |= myinvois_document
+        bill.ref = 'Some other reference'
+
+        # Generate credit note
+        action = bill.action_reverse()
+        reversal_wizard = self.env[action['res_model']].with_context(
+            active_ids=bill.ids,
+            active_model='account.move',
+            default_journal_id=bill.journal_id.id,
+        ).create({})
+        action = reversal_wizard.reverse_moves()
+        credit_note = self.env['account.move'].browse(action['res_id'])
+        credit_note.action_post()
+
+        myinvois_document = credit_note._create_myinvois_document()
+        file, errors = myinvois_document._myinvois_generate_xml_file()
+        self.assertFalse(errors)
+
+        root = etree.fromstring(file)
+        self._assert_node_values(
+            root,
+            'cac:BillingReference/cac:InvoiceDocumentReference/cbc:ID',
+            'Initial Reference',
         )
 
     def _assert_node_values(self, root, node_path, text, attributes=None):

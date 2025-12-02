@@ -3,13 +3,15 @@
 # * pos_hr
 #
 # "Dylan Kiss (dyki)" <dyki@odoo.com>, 2025.
+# "Abe Manyo (abem)" <abem@odoo.com>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-08 18:38+0000\n"
-"PO-Revision-Date: 2025-09-16 04:47+0000\n"
-"Last-Translator: \"Dylan Kiss (dyki)\" <dyki@odoo.com>\n"
+"POT-Creation-Date: 2025-11-07 18:36+0000\n"
+"PO-Revision-Date: 2025-11-08 22:00+0000\n"
+"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Indonesian <https://translate.odoo.com/projects/odoo-19/"
 "pos_hr/id/>\n"
 "Language: id\n"
@@ -64,6 +66,8 @@ msgid ""
 "Cannot generate report per employee: only one employee logged in during this "
 "session."
 msgstr ""
+"Tidak dapat membuat laporan per karyawan: hanya satu karyawan yang login "
+"pada sesi ini."
 
 #. module: pos_hr
 #. odoo-javascript
@@ -132,7 +136,7 @@ msgstr "Buang"
 #: model:ir.model.fields,field_description:pos_hr.field_report_pos_order__display_name
 #: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nama Tampilan"
 
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_hr_employee
@@ -160,6 +164,14 @@ msgid "Employee: %(employee)s - PoS Config(s): %(config_list)s \n"
 msgstr "Karyawan: %(employee)s - PoS Config(s): %(config_list)s \n"
 
 #. module: pos_hr
+#: model:ir.model.fields,help:pos_hr.field_pos_config__advanced_employee_ids
+#: model:ir.model.fields,help:pos_hr.field_res_config_settings__pos_advanced_employee_ids
+msgid ""
+"Employees linked to users with the PoS Manager role are automatically added "
+"to this list"
+msgstr ""
+
+#. module: pos_hr
 #: model:ir.model.fields,field_description:pos_hr.field_pos_config__basic_employee_ids
 #: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__pos_basic_employee_ids
 msgid "Employees with basic access"
@@ -175,7 +187,7 @@ msgstr "Karyawan dengan akses manajer"
 #: model:ir.model.fields,field_description:pos_hr.field_pos_config__minimal_employee_ids
 #: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__pos_minimal_employee_ids
 msgid "Employees with minimal access"
-msgstr ""
+msgstr "Karyawan dengan akses minimal"
 
 #. module: pos_hr
 #. odoo-javascript
@@ -196,7 +208,7 @@ msgstr "Masukkan PIN Anda"
 #: model:ir.model.fields,field_description:pos_hr.field_report_pos_order__id
 #: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: pos_hr
 #: model:ir.model.fields,help:pos_hr.field_pos_config__basic_employee_ids
@@ -205,14 +217,6 @@ msgstr ""
 #: model:ir.model.fields,help:pos_hr.field_res_config_settings__pos_minimal_employee_ids
 msgid "If left empty, all employees can log in to PoS"
 msgstr "Bila dibiarkan kosong, semua karyawan dapat login ke POS"
-
-#. module: pos_hr
-#: model:ir.model.fields,help:pos_hr.field_pos_config__advanced_employee_ids
-#: model:ir.model.fields,help:pos_hr.field_res_config_settings__pos_advanced_employee_ids
-msgid "If left empty, only Odoo users have extended rights in PoS"
-msgstr ""
-"Bila dibiarkan kosong, hanya user Odoo yang memiliki hak yang diperluas di "
-"POS"
 
 #. module: pos_hr
 #. odoo-javascript
@@ -225,7 +229,7 @@ msgstr "Kunci"
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
 #: model_terms:ir.ui.view,arch_db:pos_hr.res_config_settings_view_form
 msgid "Minimal rights"
-msgstr ""
+msgstr "Hak-Hak Minimal"
 
 #. module: pos_hr
 #. odoo-javascript
@@ -255,7 +259,7 @@ msgstr "Opening"
 #. odoo-python
 #: code:addons/pos_hr/models/pos_session.py:0
 msgid "Others"
-msgstr ""
+msgstr "Lainnya"
 
 #. module: pos_hr
 #. odoo-javascript
@@ -314,7 +318,7 @@ msgstr "Varian Produk"
 #. odoo-javascript
 #: code:addons/pos_hr/static/src/app/components/popups/cashier_selection_popup/cashier_selection_popup.xml:0
 msgid "Select Cashier"
-msgstr ""
+msgstr "Pilih Kasir"
 
 #. module: pos_hr
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
@@ -376,6 +380,11 @@ msgid ""
 msgstr ""
 "Anda tidak dapat menghapus karyawan yang mungkin dapat digunakan di sesi POS "
 "yang aktif, harap tutup sesi tersebut terlebih dahulu: \n"
+
+#~ msgid "If left empty, only Odoo users have extended rights in PoS"
+#~ msgstr ""
+#~ "Bila dibiarkan kosong, hanya user Odoo yang memiliki hak yang diperluas "
+#~ "di POS"
 
 #~ msgid "Change Cashier"
 #~ msgstr "Ganti Kasir"

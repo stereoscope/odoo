@@ -5,13 +5,14 @@
 # "Dylan Kiss (dyki)" <dyki@odoo.com>, 2025.
 # "Patricia Gutiérrez (pagc)" <pagc@odoo.com>, 2025.
 # "Fernanda Alvarez (mfar)" <mfar@odoo.com>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-08 18:38+0000\n"
-"PO-Revision-Date: 2025-09-25 17:34+0000\n"
-"Last-Translator: \"Fernanda Alvarez (mfar)\" <mfar@odoo.com>\n"
+"POT-Creation-Date: 2025-11-07 18:36+0000\n"
+"PO-Revision-Date: 2025-11-08 22:00+0000\n"
+"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Spanish (Latin America) <https://translate.odoo.com/projects/"
 "odoo-19/pos_hr/es_419/>\n"
 "Language: es_419\n"
@@ -66,6 +67,8 @@ msgid ""
 "Cannot generate report per employee: only one employee logged in during this "
 "session."
 msgstr ""
+"No es posible generar un reporte por empleado, solo un empleado inició "
+"sesión."
 
 #. module: pos_hr
 #. odoo-javascript
@@ -134,7 +137,7 @@ msgstr "Descartar"
 #: model:ir.model.fields,field_description:pos_hr.field_report_pos_order__display_name
 #: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Mostrar nombre"
 
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_hr_employee
@@ -162,6 +165,16 @@ msgid "Employee: %(employee)s - PoS Config(s): %(config_list)s \n"
 msgstr "Empleado: %(employee)s - Configuración del PdV: %(config_list)s \n"
 
 #. module: pos_hr
+#: model:ir.model.fields,help:pos_hr.field_pos_config__advanced_employee_ids
+#: model:ir.model.fields,help:pos_hr.field_res_config_settings__pos_advanced_employee_ids
+msgid ""
+"Employees linked to users with the PoS Manager role are automatically added "
+"to this list"
+msgstr ""
+"Los empleados vinculados a usuarios con el rol de gerente de PdV forman "
+"parte de esta lista de manera automática"
+
+#. module: pos_hr
 #: model:ir.model.fields,field_description:pos_hr.field_pos_config__basic_employee_ids
 #: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__pos_basic_employee_ids
 msgid "Employees with basic access"
@@ -177,7 +190,7 @@ msgstr "Empleados con acceso de gerente"
 #: model:ir.model.fields,field_description:pos_hr.field_pos_config__minimal_employee_ids
 #: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__pos_minimal_employee_ids
 msgid "Employees with minimal access"
-msgstr ""
+msgstr "Empleados con acceso mínimo"
 
 #. module: pos_hr
 #. odoo-javascript
@@ -198,7 +211,7 @@ msgstr "Escriba su NIP"
 #: model:ir.model.fields,field_description:pos_hr.field_report_pos_order__id
 #: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: pos_hr
 #: model:ir.model.fields,help:pos_hr.field_pos_config__basic_employee_ids
@@ -207,14 +220,6 @@ msgstr ""
 #: model:ir.model.fields,help:pos_hr.field_res_config_settings__pos_minimal_employee_ids
 msgid "If left empty, all employees can log in to PoS"
 msgstr "Si se deja vacío, todos los empleados pueden acceder al PdV"
-
-#. module: pos_hr
-#: model:ir.model.fields,help:pos_hr.field_pos_config__advanced_employee_ids
-#: model:ir.model.fields,help:pos_hr.field_res_config_settings__pos_advanced_employee_ids
-msgid "If left empty, only Odoo users have extended rights in PoS"
-msgstr ""
-"Si está vacío, solo los usuarios de Odoo tendrán permisos adicionales en el "
-"PdV"
 
 #. module: pos_hr
 #. odoo-javascript
@@ -227,7 +232,7 @@ msgstr "Bloquear"
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
 #: model_terms:ir.ui.view,arch_db:pos_hr.res_config_settings_view_form
 msgid "Minimal rights"
-msgstr ""
+msgstr "Permisos mínimos"
 
 #. module: pos_hr
 #. odoo-javascript
@@ -257,7 +262,7 @@ msgstr "Apertura"
 #. odoo-python
 #: code:addons/pos_hr/models/pos_session.py:0
 msgid "Others"
-msgstr ""
+msgstr "Otros"
 
 #. module: pos_hr
 #. odoo-javascript
@@ -316,7 +321,7 @@ msgstr "Variante del producto"
 #. odoo-javascript
 #: code:addons/pos_hr/static/src/app/components/popups/cashier_selection_popup/cashier_selection_popup.xml:0
 msgid "Select Cashier"
-msgstr ""
+msgstr "Seleccionar cajero"
 
 #. module: pos_hr
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
@@ -378,6 +383,11 @@ msgid ""
 msgstr ""
 "No puede eliminar un empleado que puede estar en uso en una sesión activa de "
 "PdV, primero cierre las sesiones: \n"
+
+#~ msgid "If left empty, only Odoo users have extended rights in PoS"
+#~ msgstr ""
+#~ "Si está vacío, solo los usuarios de Odoo tendrán permisos adicionales en "
+#~ "el PdV"
 
 #~ msgid "A collection of single session reports. One for each employee"
 #~ msgstr ""

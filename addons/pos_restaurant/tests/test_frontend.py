@@ -205,7 +205,9 @@ class TestFrontendCommon(TestPointOfSaleHttpCommon):
         })
 
         pricelist = cls.env['product.pricelist'].create({'name': 'Restaurant Pricelist'})
+        second_pricelist = cls.env['product.pricelist'].create({'name': 'Second Pricelist'})
         cls.pos_config.write({'pricelist_id': pricelist.id})
+        cls.pos_config.write({'available_pricelist_ids': [(6, 0, [pricelist.id, second_pricelist.id])]})
 
 
 class TestFrontend(TestFrontendCommon):
@@ -272,6 +274,7 @@ class TestFrontend(TestFrontendCommon):
         self.pos_config.is_order_printer = False
         self.pos_config.with_user(self.pos_user).open_ui()
         self.start_pos_tour('SplitBillScreenTour3')
+        self.start_pos_tour('SplitBillScreenTourPay')
 
     def test_08_refund_stay_current_table(self):
         self.pos_config.with_user(self.pos_user).open_ui()
@@ -610,6 +613,21 @@ class TestFrontend(TestFrontendCommon):
             'resource_calendar_id': resource_calendar
         })
         self.start_pos_tour('test_preset_timing_restaurant')
+        self.preset_eat_in.write({
+            'use_guest': True,
+        })
+        self.start_pos_tour('test_guest_count_bank_payment')
+        self.main_pos_config.write({'default_preset_id': self.preset_takeaway.id})
+        self.start_pos_tour('test_open_register_with_preset_takeaway')
+
+    def test_restaurant_preset_eatin_tour(self):
+        self.pos_config.write({
+            'use_presets': True,
+            'default_preset_id': self.env.ref('pos_restaurant.pos_takein_preset', False).id,
+        })
+        self.pos_user.name = "test_user"
+        self.pos_config.with_user(self.pos_user).open_ui()
+        self.start_pos_tour('RestaurantPresetEatInTour', login="pos_user")
 
     def test_combo_preparation_receipt_layout(self):
         setup_product_combo_items(self)
@@ -709,6 +727,12 @@ class TestFrontend(TestFrontendCommon):
         self.assertEqual(orders[0].floating_order_name, False)
         self.assertIsNotNone(orders[0].table_id)
 
+    def test_cancel_order_from_ui(self):
+        self.pos_config.with_user(self.pos_user).open_ui()
+        self.start_pos_tour('test_cancel_order_from_ui')
+        order = self.pos_config.current_session_id.order_ids[0]
+        self.assertEqual(order.state, "cancel", "The order should be in cancel state")
+
     def test_sync_lines_qty_update(self):
         self.pos_config.with_user(self.pos_user).open_ui()
         self.start_pos_tour('test_sync_lines_qty_update')
@@ -736,10 +760,13 @@ class TestFrontend(TestFrontendCommon):
         self.assertEqual(note[0]["text"], "Demo note")
 
     def test_sync_set_pricelist(self):
+        self.pos_config.write({
+            'use_pricelist': True,
+        })
         self.pos_config.with_user(self.pos_user).open_ui()
         self.start_pos_tour('test_sync_set_pricelist')
         order = self.pos_config.current_session_id.order_ids[0]
-        self.assertEqual(order.pricelist_id.name, "Restaurant Pricelist")
+        self.assertEqual(order.pricelist_id.name, "Second Pricelist")
 
     def test_delete_line_release_table(self):
         self.pos_config.with_user(self.pos_user).open_ui()
@@ -755,3 +782,16 @@ class TestFrontend(TestFrontendCommon):
         self.pos_config.is_order_printer = False
         self.pos_config.with_user(self.pos_user).open_ui()
         self.start_pos_tour('test_combo_synchronisation')
+
+    def test_name_preset_skip_screen(self):
+        self.preset_takeaway = self.env['pos.preset'].create({
+            'name': 'Takeaway',
+            'identification': 'name',
+        })
+        self.pos_config.write({
+            'use_presets': True,
+            'default_preset_id': self.preset_takeaway.id,
+            'available_preset_ids': [(6, 0, [self.preset_takeaway.id])],
+        })
+        self.pos_config.with_user(self.pos_user).open_ui()
+        self.start_pos_tour('test_name_preset_skip_screen')

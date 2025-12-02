@@ -271,9 +271,9 @@ class HrExpense(models.Model):
     )
 
     # Security fields
-    is_editable = fields.Boolean(string="Is Editable By Current User", compute='_compute_is_editable', readonly=True, compute_sudo=True)
-    can_reset = fields.Boolean(string='Can Reset', compute='_compute_can_reset', readonly=True, compute_sudo=True)
-    can_approve = fields.Boolean(string='Can Approve', compute='_compute_can_approve', readonly=True, compute_sudo=True)
+    is_editable = fields.Boolean(string="Is Editable By Current User", compute='_compute_is_editable', readonly=True)
+    can_reset = fields.Boolean(string='Can Reset', compute='_compute_can_reset', readonly=True)
+    can_approve = fields.Boolean(string='Can Approve', compute='_compute_can_approve', readonly=True)
 
     # Legacy sheet field, allow grouping of expenses to keep the grouping mechanic data and allow it to be re-used when re-implemented
     former_sheet_id = fields.Integer(string='Former Report')
@@ -355,7 +355,7 @@ class HrExpense(models.Model):
             managers = (
                 expense.manager_id
                 | employee.expense_manager_id
-                | employee.department_id.manager_id.user_id
+                | employee.sudo().department_id.manager_id.user_id.sudo(self.env.su)
             )
             if is_all_approver:
                 managers |= self.env.user
@@ -1276,15 +1276,6 @@ class HrExpense(models.Model):
             expense_state[state]['amount'] += total_amount_sum
         return expense_state
 
-    def action_get_attachment_view(self):
-        self.ensure_one()
-        res = self.env['ir.actions.act_window']._for_xml_id('base.action_attachment')
-        res.update({
-            'domain': [('res_model', '=', 'hr.expense'), ('res_id', 'in', self.ids)],
-            'context': {'default_res_model': 'hr.expense', 'default_res_id': self.id},
-        })
-        return res
-
     def action_approve_duplicates(self):
         root = self.env['ir.model.data']._xmlid_to_res_id("base.partner_root")
         for expense in self.duplicate_expense_ids:
@@ -1383,7 +1374,7 @@ class HrExpense(models.Model):
             elif not is_hr_admin:
                 current_managers = (
                         expense_employee.expense_manager_id
-                        | expense_employee.department_id.manager_id.user_id
+                        | expense_employee.sudo().department_id.manager_id.user_id.sudo(self.env.su)
                         | expense.manager_id
                 )
                 if expense_employee.id in expenses_employee_ids_under_user_ones:
@@ -1774,8 +1765,8 @@ class HrExpense(models.Model):
         outstanding_account = chart_template.ref(account_ref, raise_if_not_found=False)
         if not outstanding_account:
             bank_prefix = self.company_id.bank_account_code_prefix
-            template_data = chart_template._get_chart_template_data(self.company_id.chart_template).get('template_data')
-            code_digits = int(template_data.get('code_digits', 6))
+            first_account = self.env['account.account'].search([('company_ids', 'in', self.company_id.id)], limit=1)
+            code_digits = len(first_account.code or '') or 6
             chart_template._create_outstanding_accounts(self.company_id, bank_prefix, code_digits)
             outstanding_account = chart_template.ref(account_ref, raise_if_not_found=False)
         if not outstanding_account.active:

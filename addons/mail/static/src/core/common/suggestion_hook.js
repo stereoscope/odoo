@@ -180,11 +180,14 @@ export class UseSuggestion {
         this.clearSearch();
     }
     get thread() {
-        return this.composer.thread || this.composer.message.thread;
+        return this.composer.thread || this.composer.message?.thread;
     }
     insert(option) {
         let position = this.search.position + 1;
-        if ([":", "::"].includes(this.search.delimiter) || this.comp.composerService.htmlEnabled) {
+        if (
+            [":", "::"].includes(this.search.delimiter) ||
+            (this.comp.composerService.htmlEnabled && this.search.delimiter !== "/")
+        ) {
             position = this.search.position;
         }
         if (this.comp.composerService.htmlEnabled) {
@@ -251,6 +254,9 @@ export class UseSuggestion {
     }
 
     async fetchSuggestions() {
+        if (!this.thread || status(this.comp) === "destroyed") {
+            return;
+        }
         let resetFetchingState = true;
         try {
             this.abortController?.abort();
@@ -272,7 +278,7 @@ export class UseSuggestion {
                 this.state.isFetching = false;
             }
         }
-        if (status(this.comp) === "destroyed") {
+        if (!this.thread || status(this.comp) === "destroyed") {
             return;
         }
         this.update();

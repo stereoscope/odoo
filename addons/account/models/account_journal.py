@@ -23,7 +23,12 @@ class AccountJournalGroup(models.Model):
         help="Define which company can select the multi-ledger in report filters. If none is provided, available for all companies",
         default=lambda self: self.env.company,
     )
-    excluded_journal_ids = fields.Many2many('account.journal', string="Excluded Journals")
+    excluded_journal_ids = fields.Many2many(
+        comodel_name='account.journal',
+        domain='company_id and [("company_id", "parent_of", company_id)] or []',
+        string="Excluded Journals",
+        context={'active_test': False},
+    )
     sequence = fields.Integer(default=10)
 
     _uniq_name = models.Constraint(
@@ -267,6 +272,7 @@ class AccountJournal(models.Model):
     )
     accounting_date = fields.Date(compute='_compute_accounting_date')
     display_alias_fields = fields.Boolean(compute='_compute_display_alias_fields')
+    has_invalid_statements = fields.Boolean(compute='_compute_has_invalid_statements')
 
     show_fetch_in_einvoices_button = fields.Boolean(
         string="Show E-Invoice Buttons",
@@ -289,6 +295,16 @@ class AccountJournal(models.Model):
         'unique (company_id, code)',
         'Journal codes must be unique per company.',
     )
+
+    def _compute_has_invalid_statements(self):
+        journals_with_invalid_statements = self.env['account.bank.statement'].search([
+            ('journal_id', 'in', self.ids),
+            '|',
+            ('is_valid', '=', False),
+            ('is_complete', '=', False),
+        ]).journal_id
+        journals_with_invalid_statements.has_invalid_statements = True
+        (self - journals_with_invalid_statements).has_invalid_statements = False
 
     def _compute_display_alias_fields(self):
         self.display_alias_fields = self.env['mail.alias.domain'].search_count([], limit=1)
@@ -449,11 +465,21 @@ class AccountJournal(models.Model):
         for journal in self:
             pay_method_line_ids_commands = [Command.clear()]
             if journal.type in ('bank', 'cash', 'credit'):
+                existing_method_lines = journal.inbound_payment_method_line_ids
                 default_methods = journal._default_inbound_payment_methods()
-                pay_method_line_ids_commands += [Command.create({
-                    'name': pay_method.name,
-                    'payment_method_id': pay_method.id,
-                }) for pay_method in default_methods]
+                for pay_method in default_methods:
+                    payment_account = existing_method_lines.filtered(lambda m: m.payment_method_id == pay_method).payment_account_id
+                    pay_method_line_ids_commands += [
+                        Command.create({
+                            'name': pay_method.name,
+                            'payment_method_id': pay_method.id,
+                            'payment_account_id': (
+                                payment_account.id
+                                if not payment_account.currency_id or payment_account.currency_id == journal.currency_id
+                                else False
+                            ),
+                        })
+                    ]
             journal.inbound_payment_method_line_ids = pay_method_line_ids_commands
 
     @api.depends('type', 'currency_id')
@@ -461,11 +487,21 @@ class AccountJournal(models.Model):
         for journal in self:
             pay_method_line_ids_commands = [Command.clear()]
             if journal.type in ('bank', 'cash', 'credit'):
+                existing_method_lines = journal.outbound_payment_method_line_ids
                 default_methods = journal._default_outbound_payment_methods()
-                pay_method_line_ids_commands += [Command.create({
-                    'name': pay_method.name,
-                    'payment_method_id': pay_method.id,
-                }) for pay_method in default_methods]
+                for pay_method in default_methods:
+                    payment_account = existing_method_lines.filtered(lambda m: m.payment_method_id == pay_method).payment_account_id
+                    pay_method_line_ids_commands += [
+                        Command.create({
+                            'name': pay_method.name,
+                            'payment_method_id': pay_method.id,
+                            'payment_account_id': (
+                                payment_account.id
+                                if not payment_account.currency_id or payment_account.currency_id == journal.currency_id
+                                else False
+                            ),
+                        })
+                    ]
             journal.outbound_payment_method_line_ids = pay_method_line_ids_commands
 
     @api.depends('outbound_payment_method_line_ids', 'inbound_payment_method_line_ids')
@@ -834,7 +870,7 @@ class AccountJournal(models.Model):
 
         domain = [('alias_name', '=', alias_name)]
         if alias_domain_name:
-            domain.append(('alias_domain', '=', alias_domain_name))
+            domain.extend(['|', ('alias_domain', '=', alias_domain_name), ('alias_domain_id', '=', False)])
 
         existing_alias = self.env['mail.alias'].search_count(domain, limit=1)
 

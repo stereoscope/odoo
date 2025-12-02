@@ -12,20 +12,23 @@
 # Stelios Steiakakis <fs_corpse@yahoo.gr>, 2018
 # "Tiffany Chang (tic)" <tic@odoo.com>, 2025.
 # "Dylan Kiss (dyki)" <dyki@odoo.com>, 2025.
+# Panagiotis karampaglis <panosdotk@gmail.com>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025.
+# Dionysis Zacharioudakis <d.zacharioudakis@dileanity.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-08 18:38+0000\n"
-"PO-Revision-Date: 2025-09-24 19:22+0000\n"
-"Last-Translator: \"Dylan Kiss (dyki)\" <dyki@odoo.com>\n"
+"POT-Creation-Date: 2025-11-21 18:36+0000\n"
+"PO-Revision-Date: 2025-11-27 09:03+0000\n"
+"Last-Translator: Dionysis Zacharioudakis <d.zacharioudakis@dileanity.com>\n"
 "Language-Team: Greek <https://translate.odoo.com/projects/odoo-19/sale/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #. module: sale
 #. odoo-javascript
@@ -93,6 +96,8 @@ msgid ""
 ", it's 100% free! You'll save time creating beautiful quotations and track "
 "sales."
 msgstr ""
+", είναι 100% fδωρεάν! Θα εξοικονομήσετε χρόνο δημιουργώντας προσφορές και "
+"παρακολουθώντας τις πωλήσεις."
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
@@ -101,8 +106,9 @@ msgstr "2023-12-31"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
+#, fuzzy
 msgid "25.00"
-msgstr ""
+msgstr "25.00"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
@@ -112,8 +118,9 @@ msgstr "27.00"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
+#, fuzzy
 msgid "30.00"
-msgstr ""
+msgstr "30.00"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_content
@@ -725,7 +732,7 @@ msgstr "<span class=\"o_stat_text\">Πωλήθηκε</span>"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_pay_modal
 msgid "<span id=\"o_sale_portal_use_amount_total\">By paying,</span>"
-msgstr ""
+msgstr "<span id=\"o_sale_portal_use_amount_total\">Πληρώνοντας,</span>"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_sale_advance_payment_inv
@@ -740,7 +747,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_content
 msgid "<span>1.00 Units</span>"
-msgstr ""
+msgstr "<span>1.00 Τεμάχια</span>"
 
 #. module: sale
 #: model_terms:web_tour.tour,rainbow_man_message:sale.sale_tour
@@ -792,12 +799,12 @@ msgstr ""
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
 msgid "<strong class=\"d-block mt-3\">Shipping Address</strong>"
-msgstr ""
+msgstr "<strong class=\"d-block mt-3\">Διεύθυνση Παράδοσης</strong>"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
 msgid "<strong>Delivery Date</strong>"
-msgstr ""
+msgstr "<strong>Ημερομηνία Παράδοσης</strong>"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
@@ -883,7 +890,7 @@ msgid ""
 msgstr ""
 "Ένα τυπικό τιμολόγιο εκδίδεται με όλες τις γραμμές παραγγελίας έτοιμες για "
 "τιμολόγηση, σύμφωνα με την τιμολογιακή πολιτική τους (βάσει της ποσότητας "
-"που παραγγέλθηκε ή παραδόθηκε)"
+"που παραγγέλθηκε ή παραδόθηκε)."
 
 #. module: sale
 #: model:res.groups,name:sale.group_warning_sale
@@ -929,6 +936,15 @@ msgid ""
 "this sale line\n"
 "  - Stock Moves: the quantity comes from confirmed pickings\n"
 msgstr ""
+"Σύμφωνα με τη ρύθμιση του προϊόντος, η παραδοθείσα ποσότητα μπορεί να "
+"υπολογίζεται αυτόματα μέσω του μηχανισμού:\n"
+"  - Χειροκίνητα: η ποσότητα ορίζεται χειροκίνητα στη γραμμή\n"
+"  - Αναλυτικά από έξοδα: η ποσότητα είναι το άθροισμα ποσοτήτων από "
+"καταχωρημένα έξοδα\n"
+"  - Χρονοχρέωση: η ποσότητα είναι το άθροισμα των ωρών που έχουν καταγραφεί "
+"σε εργασίες συνδεδεμένες με αυτή τη γραμμή πώλησης\n"
+"  - Κινήσεις Αποθέματος: η ποσότητα προέρχεται από επιβεβαιωμένες παραλαβές/"
+"αποστολές\n"
 
 #. module: sale
 #: model:ir.model,name:sale.model_account_chart_template
@@ -937,6 +953,7 @@ msgstr "Πρότυπο γραφήματος λογαριασμού"
 
 #. module: sale
 #: model:ir.actions.act_window,name:sale.action_accrued_revenue_entry
+#: model:ir.actions.act_window,name:sale.action_accrued_revenue_entry_sale_order_line
 msgid "Accrued Revenue Entry"
 msgstr "Εγγραφή Δεδουλευμένων Εσόδων"
 
@@ -948,12 +965,12 @@ msgstr "Απαιτείται ενέργεια"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Activate"
-msgstr ""
+msgstr "Ενεργοποίηση"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Activate Stripe"
-msgstr ""
+msgstr "Ενεργοποιήστε το Stripe"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__activity_ids
@@ -964,7 +981,7 @@ msgstr "Δραστηριότητες"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_sales_order_filter
 msgid "Activities of"
-msgstr ""
+msgstr "Δραστηριότητες του"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__activity_exception_decoration
@@ -999,11 +1016,15 @@ msgid ""
 "                (e.g. \"Delivery scheduling\", \"Order Payment Follow-"
 "up\", ...)"
 msgstr ""
+"Τα σχέδια δραστηριοτήτων χρησιμοποιούνται για να αναθέσετε μια λίστα "
+"δραστηριοτήτων με λίγα μόνο κλικ\n"
+"                (π.χ. «Προγραμματισμός παράδοσης», «Παρακολούθηση Πληρωμής "
+"Παραγγελίας», ...)"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_sales_order_filter
 msgid "Activity type"
-msgstr ""
+msgstr "Τύπος Δραστηριότητας"
 
 #. module: sale
 #. odoo-javascript
@@ -1062,17 +1083,17 @@ msgstr "Προσθέστε πολλές μεταβλητές σε μια παρ�
 #. odoo-javascript
 #: code:addons/sale/static/src/js/combo_configurator_dialog/combo_configurator_dialog.xml:0
 msgid "Add to order"
-msgstr ""
+msgstr "Προσθέστε στην παραγγελία"
 
 #. module: sale
 #: model:ir.actions.act_window,name:sale.mail_followers_edit_action_from_sale
 msgid "Add/Remove Followers"
-msgstr ""
+msgstr "Προσθήκη/Αφαίρεση Ακολούθων"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__allowed_uom_ids
 msgid "Allowed Uom"
-msgstr ""
+msgstr "Επιτρεπόμενη Μονάδα Μέτρησης"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
@@ -1082,7 +1103,7 @@ msgstr "Επιτρέπεται η αποστολή προτιμολογίων σ
 #. module: sale
 #: model:ir.model.fields,help:sale.field_res_config_settings__group_proforma_sales
 msgid "Allows you to send pro-forma invoice."
-msgstr "Επιτρέπεται η αποστολή προτιμολογίων"
+msgstr "Επιτρέπεται η αποστολή προτιμολογίων."
 
 #. module: sale
 #: model:ir.model.fields,help:sale.field_product_document__attached_on_sale
@@ -1100,6 +1121,22 @@ msgid ""
 "Inside quote: The document will be included in the pdf of the quotation and "
 "sale order between the header pages and the quote table. "
 msgstr ""
+"Σας επιτρέπει να κοινοποιήσετε το έγγραφο στους πελάτες σας μέσα από μια "
+"πώληση.\n"
+"Αφήστε το κενό αν δεν θέλετε να κοινοποιήσετε αυτό το έγγραφο στον πελάτη "
+"της πώλησης.\n"
+"Στην προσφορά: το έγγραφο θα αποσταλεί και θα είναι προσβάσιμο από τους "
+"πελάτες οποιαδήποτε στιγμή.\n"
+"π.χ. αυτή η επιλογή μπορεί να είναι χρήσιμη για την κοινοποίηση αρχείων "
+"περιγραφής προϊόντων.\n"
+"Κατά την επιβεβαίωση της παραγγελίας: το έγγραφο θα αποσταλεί και θα είναι "
+"προσβάσιμο από τους πελάτες.\n"
+"π.χ. αυτή η επιλογή μπορεί να είναι χρήσιμη για την κοινοποίηση Οδηγιών "
+"Χρήσης ή ψηφιακού περιεχομένου που αγοράστηκε από το ηλεκτρονικό κατάστημα. "
+"\n"
+"Μέσα στην προσφορά: Το έγγραφο θα συμπεριληφθεί στο PDF της προσφοράς και "
+"της παραγγελίας πώλησης, ανάμεσα στις σελίδες κεφαλίδας και τον πίνακα της "
+"προσφοράς. "
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_payment_link_wizard__amount_paid
@@ -1119,6 +1156,7 @@ msgstr "Amazon Sync"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_discount__discount_amount
+#: model:ir.model.fields,field_description:sale.field_sale_order_line__amount_to_invoice_at_date
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_line_view_form_readonly
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
 msgid "Amount"
@@ -1132,12 +1170,12 @@ msgstr "Ποσό προ έκπτωσης"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_template
 msgid "Amount paid:"
-msgstr ""
+msgstr "Ποσό που καταβλήθηκε:"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_pay_modal
 msgid "Amount:"
-msgstr ""
+msgstr "Ποσό:"
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.action_orders_upselling
@@ -1146,6 +1184,10 @@ msgid ""
 "            ordered quantities, and the invoicing policy is based on ordered "
 "quantities."
 msgstr ""
+"Μια παραγγελία θεωρείται προς επιπλέον πώληση (upsell) όταν οι παραδοθείσες "
+"ποσότητες υπερβαίνουν τις αρχικά\n"
+"            παραγγελθείσες ποσότητες και η πολιτική τιμολόγησης βασίζεται "
+"στις παραγγελθείσες ποσότητες."
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__analytic_distribution
@@ -1203,6 +1245,8 @@ msgid ""
 "Are you sure you want to cancel this order? This may affect related "
 "documents or processes."
 msgstr ""
+"Είστε σίγουροι ότι θέλετε να ακυρώσετε αυτή την παραγγελία; Αυτό μπορεί να "
+"επηρεάσει σχετικά έγγραφα ή διαδικασίες."
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
@@ -1219,6 +1263,10 @@ msgid ""
 "As an example, if you sell pre-paid hours of services, Odoo recommends you\n"
 "            to sell extra hours when all ordered hours have been consumed."
 msgstr ""
+"Για παράδειγμα, αν πουλάτε προπληρωμένες ώρες υπηρεσιών, το Odoo σας "
+"προτείνει\n"
+"            να πουλήσετε επιπλέον ώρες όταν όλες οι παραγγελθείσες ώρες "
+"έχουν καταναλωθεί."
 
 #. module: sale
 #. odoo-python
@@ -1228,6 +1276,10 @@ msgid ""
 "been used for this product, the change of unit of measure can not be done.If "
 "you want to change it, please archive the product and create a new one."
 msgstr ""
+"Εφόσον έχουν ήδη χρησιμοποιηθεί για αυτό το προϊόν άλλες μονάδες μέτρησης "
+"(π.χ : %(problem_uom)s) διαφορετικές από την μονάδα μέτρησης %(uom)s , η "
+"αλλαγή της μονάδας μέτρησης δεν μπορεί να πραγματοποιηθεί.Αν θέλετε να την "
+"αλλάξετε, παρακαλώ αρχειοθετήστε το προϊόν και δημιουργήστε ένα νέο."
 
 #. module: sale
 #: model:ir.model.fields.selection,name:sale.selection__product_template__expense_policy__cost
@@ -1284,7 +1336,7 @@ msgstr "Βασισμένο στην Αναφορά Εγγράφου"
 #: model_terms:ir.actions.act_window,help:sale.action_quotations
 #: model_terms:ir.actions.act_window,help:sale.action_quotations_with_onboarding
 msgid "Beat competitors with stunning quotations!"
-msgstr ""
+msgstr "Ξεπεράστε τους ανταγωνιστές με εντυπωσιακές προσφορές!"
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.action_quotations
@@ -1293,6 +1345,8 @@ msgid ""
 "Boost sales with online payments or signatures, upsells, and a great "
 "customer portal."
 msgstr ""
+"Αυξήστε τις πωλήσεις με online πληρωμές ή υπογραφές, επιπλέον πωλήσεις "
+"(upsells) και ένα εξαιρετικό portal πελατών."
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
@@ -1302,6 +1356,10 @@ msgid ""
 "purchase amount, period). Rewards can be discounts (% or amount) or free "
 "products."
 msgstr ""
+"Αυξήστε τις πωλήσεις σας με διάφορα είδη προγραμμάτων: Κουπόνια, Προσφορές, "
+"Δωροκάρτες, Πιστότητα. Μπορούν να οριστούν συγκεκριμένες προϋποθέσεις "
+"(προϊόντα, πελάτες, ελάχιστο ποσό αγοράς, περίοδος). Οι ανταμοιβές μπορεί να "
+"είναι εκπτώσεις (% oή χρηματικό ποσό) ή δωρεάν προϊόντα."
 
 #. module: sale
 #. odoo-javascript
@@ -1322,7 +1380,7 @@ msgstr "Με την πληρωμή,"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_sign_modal
 msgid "By signing, you confirm acceptance on behalf of"
-msgstr ""
+msgstr "Με την υπογραφή σας, επιβεβαιώνετε την αποδοχή εκ μέρους του/της"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_account_bank_statement_line__campaign_id
@@ -1382,6 +1440,20 @@ msgid ""
 "   • For services (and other products), change the 'Invoicing Policy' to "
 "'Prepaid/Fixed Price'.\n"
 msgstr ""
+"Δεν είναι δυνατή η δημιουργία τιμολογίου. Δεν υπάρχουν είδη διαθέσιμα για "
+"τιμολόγηση.\n"
+"\n"
+"Για να επιλύσετε αυτό το ζήτημα, βεβαιωθείτε ότι:\n"
+"   • Τα προϊόντα έχουν παραδοθεί πριν προσπαθήσετε να τα τιμολογήσετε.\n"
+"   • Η πολιτική τιμολόγησης του προϊόντος είναι σωστά ρυθμισμένη.\n"
+"\n"
+"Αν θέλετε να τιμολογείτε με βάση τις παραγγελθείσες ποσότητες αντί για τις "
+"παραδοθείσες:\n"
+"   • Για αναλώσιμα ή αποθηκεύσιμα προϊόντα, ανοίξτε το προϊόν, μεταβείτε "
+"στην καρτέλα «Γενικές Πληροφορίες» και αλλάξτε την «Πολιτική Τιμολόγησης» "
+"από «Παραδοθείσες Ποσότητες» σε «Παραγγελθείσες Ποσότητες».\n"
+"   • Για υπηρεσίες (και άλλα προϊόντα), αλλάξτε την «Πολιτική Τιμολόγησης» "
+"σε «Προπληρωμή/Σταθερή Τιμή»\n"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
@@ -1396,12 +1468,12 @@ msgstr "Κατάλογος"
 #. module: sale
 #: model:ir.ui.menu,name:sale.menu_product_categories
 msgid "Categories"
-msgstr ""
+msgstr "Κατηγορίες"
 
 #. module: sale
 #: model:product.template,name:sale.product_product_1_product_template
 msgid "Chair floor protection"
-msgstr ""
+msgstr "Προστασία δαπέδου για καρέκλα"
 
 #. module: sale
 #. odoo-python
@@ -1411,30 +1483,34 @@ msgid ""
 "adjustments in the details of the lines. You might consider updating the "
 "prices."
 msgstr ""
+"Η αλλαγή της εταιρείας σε μια υπάρχουσα προσφορά μπορεί να απαιτήσει "
+"ορισμένες χειροκίνητες προσαρμογές στις λεπτομέρειες των γραμμών. Ίσως "
+"χρειαστεί να ενημερώσετε τις τιμές."
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.action_quotations
 #: model_terms:ir.actions.act_window,help:sale.action_quotations_with_onboarding
 msgid "Check a sample. It's clean!"
-msgstr ""
+msgstr "Ελέγξτε ένα δείγμα. Είναι καθαρό!"
 
 #. module: sale
 #. odoo-javascript
 #: code:addons/sale/static/src/js/tours/sale.js:0
 msgid "Click here to add some products or services to your quotation."
 msgstr ""
+"Κάντε κλικ εδώ για να προσθέσετε προϊόντα ή υπηρεσίες στην προσφορά σας."
 
 #. module: sale
 #. odoo-javascript
 #: code:addons/sale/static/src/js/product_card/product_card.xml:0
 msgid "Click to configure"
-msgstr ""
+msgstr "Κάντε κλικ για ρύθμιση"
 
 #. module: sale
 #. odoo-javascript
 #: code:addons/sale/static/src/xml/sales_team_progress_bar_template.xml:0
 msgid "Click to define an invoicing target"
-msgstr ""
+msgstr "Κάντε κλικ για να ορίσετε στόχο τιμολόγησης"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_pay_modal
@@ -1446,33 +1522,33 @@ msgstr "Κλείσιμο"
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__collapse_composition
 msgid "Collapse Composition"
-msgstr ""
+msgstr "Σύμπτυξη Σύνθεσης"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__collapse_prices
 msgid "Collapse Prices"
-msgstr ""
+msgstr "Σύμπτυξη Τιμών"
 
 #. module: sale
 #: model:ir.ui.menu,name:sale.menu_product_combos
 msgid "Combo Choices"
-msgstr ""
+msgstr "Επιλογές Combo"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__combo_item_id
 msgid "Combo Item"
-msgstr ""
+msgstr "Αντικείμενο Combo"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_content
 msgid "Combo Product"
-msgstr ""
+msgstr "Συνδυασμένο Προϊόν"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__module_sale_commission
 msgid "Commissions"
-msgstr ""
+msgstr "Προμήθειες"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_payment_provider__so_reference_type
@@ -1524,7 +1600,7 @@ msgstr "Υπολογισμός εξόδων αποστολής και αποστ
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Compute shipping costs and ship with Envia.com"
-msgstr ""
+msgstr "Υπολογίστε τα έξοδα αποστολής και στείλτε με Envia.com"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
@@ -1597,13 +1673,13 @@ msgstr "Διαμόρφωση"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Configure"
-msgstr ""
+msgstr "Παραμετροποίηση"
 
 #. module: sale
 #. odoo-javascript
 #: code:addons/sale/static/src/js/product_configurator_dialog/product_configurator_dialog.js:0
 msgid "Configure your product"
-msgstr ""
+msgstr "Ρυθμίστε το προϊόν σας"
 
 #. module: sale
 #. odoo-javascript
@@ -1615,27 +1691,27 @@ msgstr "Επιβεβαίωση"
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_payment_link_wizard__confirmation_message
 msgid "Confirmation Message"
-msgstr ""
+msgstr "Μήνυμα Επιβεβαίωσης"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_template
 msgid "Connect with your software!"
-msgstr ""
+msgstr "Συνδεθείτε με το λογισμικό σας!"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
 msgid "Connect your software"
-msgstr ""
+msgstr "Συνδέστε το λογισμικό σας"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Connectors"
-msgstr ""
+msgstr "Συνδέσεις"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__consolidated_billing
 msgid "Consolidated Billing"
-msgstr ""
+msgstr "Συγκεντρωτική Τιμολόγηση"
 
 #. module: sale
 #: model:ir.model,name:sale.model_res_partner
@@ -1645,17 +1721,17 @@ msgstr "Επαφή"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_template
 msgid "Copy"
-msgstr ""
+msgstr "Αντιγραφή"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__country_code
 msgid "Country code"
-msgstr ""
+msgstr "Κωδικός Χώρας"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__module_sale_loyalty
 msgid "Coupons & Loyalty"
-msgstr ""
+msgstr "Κουπόνια & Πιστότητα"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_view_search_inherit_quotation
@@ -1665,7 +1741,7 @@ msgstr "Ημερομηνία Δημιουργίας"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_sale_advance_payment_inv
 msgid "Create Draft"
-msgstr ""
+msgstr "Δημιουργία Πρόχειρου"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__advance_payment_method
@@ -1681,12 +1757,12 @@ msgstr "Δημιουργία Τιμολογίων"
 #. module: sale
 #: model:ir.model,website_form_label:sale.model_res_partner
 msgid "Create a Customer"
-msgstr ""
+msgstr "Δημιουργία Πελάτη"
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.mail_activity_plan_action_sale_order
 msgid "Create a Sale Order Activity Plan"
-msgstr ""
+msgstr "Δημιουργία Σχεδίου Δραστηριοτήτων Παραγγελίας Πώλησης"
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.action_invoice_salesteams
@@ -1704,12 +1780,12 @@ msgstr "Δημιουργήστε ένα νέο προϊόν"
 #: model_terms:ir.actions.act_window,help:sale.action_orders_salesteams
 #: model_terms:ir.actions.act_window,help:sale.action_quotations_salesteams
 msgid "Create a new quotation, the first step of a new sale!"
-msgstr ""
+msgstr "Δημιουργήστε μια νέα προσφορά, το πρώτο βήμα μιας νέας πώλησης!"
 
 #. module: sale
 #: model:ir.actions.act_window,name:sale.action_view_sale_advance_payment_inv
 msgid "Create invoice(s)"
-msgstr ""
+msgstr "Δημιουργία τιμολογίου/ων"
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.action_invoice_salesteams
@@ -1717,6 +1793,8 @@ msgid ""
 "Create invoices, register payments and keep track of the discussions with "
 "your customers."
 msgstr ""
+"Δημιουργήστε τιμολόγια, καταχωρήστε πληρωμές και παρακολουθήστε τις "
+"συζητήσεις με τους πελάτες σας."
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__service_tracking
@@ -1729,6 +1807,8 @@ msgid ""
 "Create one invoice for all orders related to same customer, same invoicing "
 "address and same delivery address."
 msgstr ""
+"Δημιουργήστε ένα τιμολόγιο για όλες τις παραγγελίες που αφορούν τον ίδιο "
+"πελάτη, με την ίδια διεύθυνση τιμολόγησης και την ίδια διεύθυνση παράδοσης."
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__create_uid
@@ -1759,6 +1839,8 @@ msgid ""
 "Creation date of draft/sent orders,\n"
 "Confirmation date of confirmed orders."
 msgstr ""
+"Ημερομηνία δημιουργίας πρόχειρωνν/απεσταλμένων παραγγελιών,\n"
+"Ημερομηνία επιβεβαίωσης επιβεβαιωμένων παραγγελιών."
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__currency_id
@@ -1778,7 +1860,7 @@ msgstr "Ισοτιμία"
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__product_custom_attribute_value_ids
 msgid "Custom Values"
-msgstr ""
+msgstr "Προσαρμοσμένες Τιμές"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__partner_id
@@ -1793,18 +1875,18 @@ msgstr "Πελάτης"
 #: model:ir.model.fields,field_description:sale.field_sale_report__country_id
 #: model_terms:ir.ui.view,arch_db:sale.view_order_product_search
 msgid "Customer Country"
-msgstr ""
+msgstr "Χώρα του Πελάτη"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_report__commercial_partner_id
 msgid "Customer Entity"
-msgstr ""
+msgstr "Οντότητα Πελάτη"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_report__industry_id
 #: model_terms:ir.ui.view,arch_db:sale.view_order_product_search
 msgid "Customer Industry"
-msgstr ""
+msgstr "Κλάδος Πελάτη"
 
 #. module: sale
 #: model:ir.model.fields,help:sale.field_sale_order__access_url
@@ -1819,17 +1901,17 @@ msgstr "Αναφορά πελάτη"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
 msgid "Customer Signature"
-msgstr ""
+msgstr "Υπογραφή Πελάτη"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_report__state_id
 msgid "Customer State"
-msgstr ""
+msgstr "Πολιτεία Πελάτη"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_report__partner_zip
 msgid "Customer ZIP"
-msgstr ""
+msgstr "Ταχυδρομικός Κώδικας Πελάτη"
 
 #. module: sale
 #: model:ir.ui.menu,name:sale.menu_reporting_customer
@@ -1865,23 +1947,25 @@ msgid ""
 "Days between quotation proposal and expiration. 0 days means automatic "
 "expiration is disabled"
 msgstr ""
+"Ημέρες μεταξύ υποβολής προσφοράς και λήξης. 0 ημέρες σημαίνει ότι η αυτόματη "
+"λήξη είναι απενεργοποιημένη"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__deduct_down_payments
 msgid "Deduct down payments"
-msgstr ""
+msgstr "Αφαιρέστε προκαταβολές"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_company__quotation_validity_days
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__quotation_validity_days
 msgid "Default Quotation Validity"
-msgstr ""
+msgstr "Προεπιλεγμένη Ισχύς Προσφοράς"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__company_price_include
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__company_price_include
 msgid "Default Sales Price Include"
-msgstr ""
+msgstr "Περιλαμβάνεται στην Προεπιλεγμένη Τιμή Πώλησης"
 
 #. module: sale
 #: model:ir.model.fields,help:sale.field_sale_order__company_price_include
@@ -1890,6 +1974,8 @@ msgid ""
 "Default on whether the sales price used on the product and invoices with "
 "this Company includes its taxes."
 msgstr ""
+"Προεπιλογή σχετικά με το αν η τιμή πώλησης που χρησιμοποιείται στο προϊόν "
+"και στα τιμολόγια με αυτή την εταιρεία περιλαμβάνει τους φόρους της."
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
@@ -1907,7 +1993,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/sale/static/src/js/sale_order_line_field/sale_order_line_field.xml:0
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
@@ -1915,6 +2001,7 @@ msgid "Deliver Content by Email"
 msgstr ""
 
 #. module: sale
+#: model:ir.model.fields,field_description:sale.field_sale_order_line__qty_delivered_at_date
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
 msgid "Delivered"
 msgstr "Παραδόθηκαν"
@@ -2246,7 +2333,7 @@ msgstr ""
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__invoice_mail_template_id
 msgid "Email Template"
-msgstr ""
+msgstr "Πρότυπο email"
 
 #. module: sale
 #: model:ir.model.fields,help:sale.field_res_config_settings__invoice_mail_template_id
@@ -2262,7 +2349,7 @@ msgstr ""
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__module_delivery_envia
 msgid "Envia.com Connector"
-msgstr ""
+msgstr "Διασύνδεση Envia.com"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__expected_date
@@ -2287,7 +2374,7 @@ msgstr ""
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_content
 msgid "Expiration Date:"
-msgstr "Ημερ. Λήξης"
+msgstr "Ημερ. Λήξης:"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__extra_tax_data
@@ -2346,7 +2433,7 @@ msgstr "Ακόλουθοι (Συνεργάτες)"
 #. module: sale
 #: model:ir.model.fields,help:sale.field_sale_order__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr "Γραμματοσειρά awesome  π.χ. fa-tasks"
+msgstr "Γραμματοσειρά awesome π.χ. fa-tasks"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.product_pricelist_item_form
@@ -2729,6 +2816,7 @@ msgid "Invoice what is ordered"
 msgstr "Τιμολόγηση ότι έχει παραγγελθεί"
 
 #. module: sale
+#: model:ir.model.fields,field_description:sale.field_sale_order_line__qty_invoiced_at_date
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
 msgid "Invoiced"
 msgstr "Τιμολογημένα"
@@ -2915,7 +3003,7 @@ msgstr "Χρόνος Παράδοσης"
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Let your customers log in to see their documents"
 msgstr ""
-"Επιτρέψτε τους πελάτες σας να συνδεθούν για να δουν τα δικά τους έγγραφα."
+"Επιτρέψτε τους πελάτες σας να συνδεθούν για να δουν τα δικά τους έγγραφα"
 
 #. module: sale
 #. odoo-javascript
@@ -3083,7 +3171,7 @@ msgstr ""
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_sales_order_filter
 msgid "My Activities"
-msgstr ""
+msgstr "Οι Δραστηριότητες μου"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order__my_activity_date_deadline
@@ -3223,7 +3311,7 @@ msgstr "Αριθμός μηνυμάτων με σφάλμα παράδοσης"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_template
 msgid "Odoo"
-msgstr ""
+msgstr "Odoo"
 
 #. module: sale
 #: model:product.template,description_sale:sale.product_product_1_product_template
@@ -3496,7 +3584,7 @@ msgstr "Εξόφληση Τώρα"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_pay_modal
 msgid "Pay Order"
-msgstr ""
+msgstr "Σειρά Πληρωμής"
 
 #. module: sale
 #: model:ir.model.fields.selection,name:sale.selection__res_company__sale_onboarding_payment_method__other
@@ -3700,6 +3788,7 @@ msgid "Product Catalog Product Is In Sale Order"
 msgstr ""
 
 #. module: sale
+#: model:ir.model.fields,field_description:sale.field_sale_order_line__categ_id
 #: model:ir.model.fields,field_description:sale.field_sale_report__categ_id
 #: model_terms:ir.ui.view,arch_db:sale.view_order_product_search
 msgid "Product Category"
@@ -3721,7 +3810,7 @@ msgstr "Εικόνα Είδους"
 #. module: sale
 #: model:ir.ui.menu,name:sale.menu_product_tags
 msgid "Product Tags"
-msgstr ""
+msgstr "Ετικέτες Είδους"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__product_template_id
@@ -4002,7 +4091,7 @@ msgstr "Αφαίρεση ενός"
 #. module: sale
 #: model:ir.model,name:sale.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Αναφορά δράσης"
 
 #. module: sale
 #: model:ir.ui.menu,name:sale.menu_sale_report
@@ -4085,6 +4174,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_content
 msgid "Sale Information"
 msgstr "Πληροφορίες Πώλησης"
+
+#. module: sale
+#: model:ir.model.fields,field_description:sale.field_account_move_line__sale_line_warn_msg
+#: model:ir.model.fields,field_description:sale.field_sale_order_line__sale_line_warn_msg
+msgid "Sale Line Warn Msg"
+msgstr ""
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_advance_payment_inv__sale_order_ids
@@ -4233,10 +4328,8 @@ msgid "Sales Order Line"
 msgstr "Γραμμή Παραγγελίας"
 
 #. module: sale
-#: model:ir.model.fields,field_description:sale.field_account_move_line__sale_line_warn_msg
 #: model:ir.model.fields,field_description:sale.field_product_product__sale_line_warn_msg
 #: model:ir.model.fields,field_description:sale.field_product_template__sale_line_warn_msg
-#: model:ir.model.fields,field_description:sale.field_sale_order_line__sale_line_warn_msg
 msgid "Sales Order Line Warning"
 msgstr ""
 
@@ -4404,6 +4497,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Sell and purchase products in different units of measure or packagings"
 msgstr ""
+"Πουλήστε και αγοράστε προϊόντα σε διαφορετικές μονάδες μέτρησης ή συσκευασίες"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
@@ -4415,7 +4509,7 @@ msgstr ""
 #: code:addons/sale/models/sale_order.py:0
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
 msgid "Send"
-msgstr ""
+msgstr "Αποστολή"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
@@ -4465,7 +4559,7 @@ msgstr "Ακολουθία"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Set multiple prices per product, automated discounts, etc."
-msgstr "Ορίστε πολλαπλές τιμές ανά είδος, αυτοματοποιημένες εκπτώσεις, κλπ"
+msgstr "Ορίστε πολλαπλές τιμές ανά είδος, αυτοματοποιημένες εκπτώσεις, κλπ."
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
@@ -4508,6 +4602,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:sale.view_sales_order_filter
 msgid "Show all records whose next activity date is past"
 msgstr ""
+"Εμφάνιση όλων των καταγραφών των οποίων η επόμενη δραστηριότητα είναι "
+"προγενέστερη"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
@@ -4723,7 +4819,7 @@ msgstr ""
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
 msgid "Tax ID"
-msgstr "Α.Φ.Μ."
+msgstr "ΑΦΜ"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
@@ -4969,7 +5065,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/sale/wizard/sale_make_invoice_advance.py:0
 msgid "The value of the down payment amount must be positive."
-msgstr "Η αξία του ποσού της προκαταβολής θα πρέπει να είναι θετική"
+msgstr "Η αξία του ποσού της προκαταβολής θα πρέπει να είναι θετική."
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.portal_my_quotations
@@ -5087,7 +5183,7 @@ msgstr ""
 "εταίρος, προϊόν, κλπ). Χρησιμοποιεί την έκθεση για να κάνει ανάλυση για "
 "πωλήσεις που δεν έχουν τιμολογηθεί ακόμη. Αν θέλετε να αναλύσετε τον κύκλο "
 "εργασιών, θα πρέπει να χρησιμοποιήσετε την έκθεση Ανάλυση Τιμολογίου στην "
-"εφαρμογή της Λογιστικής"
+"εφαρμογή της Λογιστικής."
 
 #. module: sale
 #: model_terms:ir.actions.act_window,help:sale.action_order_report_so_salesteam
@@ -5098,12 +5194,12 @@ msgid ""
 "invoiced yet. If you want to analyse your turnover, you should use the "
 "Invoice Analysis report in the Accounting application."
 msgstr ""
-"Αυτή η έκθεση κάνει ανάλυση τις παραγγελίες.  Η ανάλυση ελέγχει τα έσοδα απο "
+"Αυτή η έκθεση κάνει ανάλυση τις παραγγελίες. Η ανάλυση ελέγχει τα έσοδα απο "
 "τις πωλήσεις και τα ταξινομεί ανά διαφορετικά ομαδικά κριτήρια (πωλητής, "
 "εταίρος, προϊόν, κλπ). Χρησιμοποιεί την έκθεση για να κάνει ανάλυση για "
 "πωλήσεις που δεν έχουν τιμολογηθεί ακόμη. Αν θέλετε να αναλύσετε τον κύκλο "
 "εργασιών, θα πρέπει να χρησιμοποιήσετε την έκθεση Ανάλυση Τιμολογίου στην "
-"εφαρμογή της Λογιστικής"
+"εφαρμογή της Λογιστικής."
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
@@ -5247,7 +5343,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__product_uom_id
 #: model:ir.model.fields,field_description:sale.field_sale_report__product_uom_id
 msgid "Unit"
-msgstr ""
+msgstr "Μονάδα"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_line__price_unit
@@ -5266,7 +5362,7 @@ msgstr "Τιμή Μονάδας:"
 #: model:ir.ui.menu,name:sale.menu_product_uom_form_action
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Units & Packagings"
-msgstr ""
+msgstr "Μονάδες Μέτρησης & Συσκευασίες"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
@@ -5674,7 +5770,7 @@ msgstr "μονάδες"
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.report_saleorder_document
 msgid "with"
-msgstr ""
+msgstr "με"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_pay_modal

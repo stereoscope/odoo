@@ -8,13 +8,14 @@
 #
 # "Dylan Kiss (dyki)" <dyki@odoo.com>, 2025.
 # "Tony Ng (ngto)" <ngto@odoo.com>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~18.3+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-09 12:16+0000\n"
-"PO-Revision-Date: 2025-10-01 02:30+0000\n"
-"Last-Translator: \"Tony Ng (ngto)\" <ngto@odoo.com>\n"
+"PO-Revision-Date: 2025-11-16 15:13+0000\n"
+"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Chinese (Traditional Han script) <https://translate.odoo.com/"
 "projects/odoo-19/base/zh_Hant/>\n"
 "Language: zh_TW\n"
@@ -9021,11 +9022,11 @@ msgid ""
 "an organization such as an Organization Chart for employees for instance.\n"
 msgstr ""
 "\n"
-"Odoo Web 層次結構視圖\n"
+"Odoo Web 層級結構檢視畫面\n"
 "=======================\n"
 "\n"
-"該模塊添加了一個新視圖，用於定義視圖以顯示組織結構，例如員工組織結構圖。\n"
-"例如員工組織結構圖。\n"
+"此模組加入新的檢視畫面，可定義用作顯示\n"
+"組織結構的檢視畫面，例如員工架構圖。\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_web
@@ -14867,7 +14868,7 @@ msgstr ""
 msgid ""
 "<code>model</code>: model of the record on which the action is triggered; is "
 "a void recordset"
-msgstr "<code>model</code>:觸發操作的記錄的模型；是無效記錄集"
+msgstr "<code>model</code>：觸發操作所針對的記錄的模型，是空白的記錄集"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_server_action_form
@@ -19666,7 +19667,7 @@ msgstr "審計及認證"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_accountant_knowledge
 msgid "Audit Reports"
-msgstr ""
+msgstr "審計報告"
 
 #. module: base
 #: model:res.currency,currency_subunit_label:base.ISK
@@ -20230,7 +20231,7 @@ msgstr "貝沙"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_bakery
 msgid "Bakery"
-msgstr ""
+msgstr "烘焙店"
 
 #. module: base
 #: model:res.currency,currency_unit_label:base.PAB
@@ -20738,7 +20739,7 @@ msgstr "單車租賃"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_bike_shop
 msgid "Bike Shop"
-msgstr ""
+msgstr "單車店"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_sale_ups
@@ -21420,7 +21421,7 @@ msgstr "CUIT"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_cake_shop
 msgid "Cake Shop"
-msgstr ""
+msgstr "蛋糕店"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_esg
@@ -21482,7 +21483,7 @@ msgstr "喀麥隆 - 會計報表"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_campsite
 msgid "Campsite"
-msgstr ""
+msgstr "露營場地"
 
 #. module: base
 #. odoo-python
@@ -21585,7 +21586,7 @@ msgstr "取消"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_candy_shop
 msgid "Candy Shop"
-msgstr ""
+msgstr "糖果店"
 
 #. module: base
 #. odoo-python
@@ -21639,7 +21640,7 @@ msgstr "佛得角"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_carpenter
 msgid "Carpenter"
-msgstr ""
+msgstr "木匠"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_model_fields__on_delete__cascade
@@ -22714,7 +22715,7 @@ msgstr "電腦"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_concert_halls
 msgid "Concert Halls"
-msgstr ""
+msgstr "音樂廳"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_default__condition
@@ -23074,7 +23075,7 @@ msgstr "企業、服務、科技、圖形、插圖"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_cosmetics_store
 msgid "Cosmetics Store"
-msgstr ""
+msgstr "化妝品商店"
 
 #. module: base
 #: model:res.country,name:base.cr
@@ -23200,7 +23201,7 @@ msgstr "課程認證"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_coworking
 msgid "Coworking"
-msgstr ""
+msgstr "共享辦公室"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_rule__perm_create
@@ -23341,12 +23342,12 @@ msgstr "建立及管理 ESG 倡議計劃，將你的影響力化為實際行動�
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_expense_stripe
 msgid "Create and manage company expense cards via Stripe"
-msgstr ""
+msgstr "使用 Stripe 建立及管理公司開支卡"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_expense_stripe_demo
 msgid "Create and manage company expense cards via Stripe: Demo"
-msgstr ""
+msgstr "使用 Stripe 建立及管理公司開支卡：演示"
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_res_company_form
@@ -23851,7 +23852,7 @@ msgstr "自訂快捷方式"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_test_custo
 msgid "Custom Theme (Testing suite)"
-msgstr ""
+msgstr "自訂主題（測試套件）"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_server__selection_value
@@ -24022,7 +24023,7 @@ msgstr "DIN 5008 - Stock"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_diy_workshops
 msgid "DIY Workshops"
-msgstr ""
+msgstr "DIY 手作工作室"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__report_paperformat__format__dle
@@ -25223,7 +25224,7 @@ msgstr "德拉姆"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_driving_school
 msgid "Driving School"
-msgstr ""
+msgstr "駕駛學校"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_stock_dropshipping
@@ -25821,7 +25822,7 @@ msgstr "輸入密鑰的描述和用途."
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_users_identitycheck_view_form
 msgid "Enter your password"
-msgstr ""
+msgstr "輸入你的密碼"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_event_track_gantt
@@ -25915,7 +25916,7 @@ msgstr "設備、資產、內部硬件、分配跟蹤"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_equity
 msgid "Equity"
-msgstr ""
+msgstr "權益"
 
 #. module: base
 #: model:res.country,name:base.er
@@ -25997,7 +25998,7 @@ msgstr "錯誤!不能建立循環引用的功能表."
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_escape_rooms
 msgid "Escape Rooms"
-msgstr ""
+msgstr "密室逃脫"
 
 #. module: base
 #: model:res.currency,currency_unit_label:base.CVE
@@ -26007,7 +26008,7 @@ msgstr "埃斯庫多/士姑度"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_industry_real_estate
 msgid "Estate Management"
-msgstr ""
+msgstr "物業管理"
 
 #. module: base
 #: model:res.country,name:base.ee
@@ -26592,7 +26593,7 @@ msgstr "活動參展商"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_event_management
 msgid "Event Management"
-msgstr ""
+msgstr "活動管理"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_event_social
@@ -26746,12 +26747,12 @@ msgstr "展開組"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_expense_stripe
 msgid "Expense cards"
-msgstr ""
+msgstr "開支卡"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_expense_stripe_demo
 msgid "Expense cards: Demo"
-msgstr ""
+msgstr "開支卡：演示"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_human_resources_expenses
@@ -27634,7 +27635,7 @@ msgstr "從文件車隊"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_florist
 msgid "Florist"
-msgstr ""
+msgstr "花店"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_orchid
@@ -27701,7 +27702,7 @@ msgstr "食品"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_food_distribution
 msgid "Food Distribution"
-msgstr ""
+msgstr "食品分銷"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_food_trucks
@@ -28123,7 +28124,7 @@ msgstr "加蓬 - 會計報表"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_gallery
 msgid "Gallery"
-msgstr ""
+msgstr "畫廊"
 
 #. module: base
 #: model:res.country,name:base.gm
@@ -28667,12 +28668,12 @@ msgstr "根西島"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_guest_house
 msgid "Guest House"
-msgstr ""
+msgstr "賓館"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_guided_tours
 msgid "Guided Tours"
-msgstr ""
+msgstr "導賞團"
 
 #. module: base
 #: model:res.currency,currency_unit_label:base.ANG
@@ -28808,7 +28809,7 @@ msgstr "HTTP 路由"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hvac_services
 msgid "HVAC Services"
-msgstr ""
+msgstr "暖通空調服務"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hair_salon
@@ -29096,7 +29097,7 @@ msgstr "歷史"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_holiday_house
 msgid "Holiday House"
-msgstr ""
+msgstr "度假屋"
 
 #. module: base
 #: model:res.country,name:base.va
@@ -29171,7 +29172,7 @@ msgstr "主機名稱或SMTP伺服器IP地址"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hotel
 msgid "Hotel"
-msgstr ""
+msgstr "酒店"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_cron__interval_type__hours
@@ -32002,7 +32003,7 @@ msgstr "賴比瑞亞"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_library
 msgid "Library"
-msgstr ""
+msgstr "圖書館"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_bookstore
@@ -32320,7 +32321,7 @@ msgstr "使用密碼金鑰登入"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_device_view_kanban
 msgid "Log out"
-msgstr ""
+msgstr "登出"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_users_form
@@ -33313,7 +33314,7 @@ msgstr "成員"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_members_club
 msgid "Members Club"
-msgstr ""
+msgstr "會員俱樂部"
 
 #. module: base
 #: model:ir.model,name:base.model_ir_ui_menu
@@ -33390,7 +33391,7 @@ msgstr "消息"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_metal_fabricator
 msgid "Metal Fabricator"
-msgstr ""
+msgstr "金屬製造商"
 
 #. module: base
 #: model:res.currency,currency_unit_label:base.MZN
@@ -34167,7 +34168,7 @@ msgstr "多幣別"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_museum
 msgid "Museum"
-msgstr ""
+msgstr "博物館"
 
 #. module: base
 #: model_terms:res.company,invoice_terms_html:base.main_company
@@ -34545,7 +34546,7 @@ msgstr "尼日利亞 - 會計報表"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_night_clubs
 msgid "Night Clubs"
-msgstr ""
+msgstr "夜店"
 
 #. module: base
 #: model:res.country,name:base.nu
@@ -34700,7 +34701,7 @@ msgstr "北馬其頓"
 #. module: base
 #: model:res.country,name:base.xi
 msgid "Northern Ireland"
-msgstr ""
+msgstr "北愛爾蘭"
 
 #. module: base
 #: model:res.country,name:base.mp
@@ -40572,7 +40573,7 @@ msgstr "房地產"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_real_estate
 msgid "Real Estate Agency"
-msgstr ""
+msgstr "地產代理公司"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_real_estate
@@ -41111,7 +41112,7 @@ msgstr "零售"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_server_action_history_wizard__revision
 msgid "Revision"
-msgstr ""
+msgstr "修訂"
 
 #. module: base
 #. odoo-python
@@ -42321,7 +42322,7 @@ msgstr "結束向帶有潛在客戶的訪客發送簡訊"
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_server__state__webhook
 msgid "Send Webhook Notification"
-msgstr "發送 Webhook 通知"
+msgstr "傳送網絡鈎子（webhook）通知"
 
 #. module: base
 #: model:ir.module.module,description:base.module_whatsapp_stock
@@ -42636,7 +42637,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.category,name:base.module_category_service
 msgid "Service"
-msgstr ""
+msgstr "服務"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_timesheet_margin
@@ -42792,7 +42793,7 @@ msgstr "Shiprocket 運輸"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_shoe_maker
 msgid "Shoemaker"
-msgstr ""
+msgstr "鞋匠"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_test_website_sale
@@ -43251,7 +43252,7 @@ msgstr "南蘇丹"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_spa_resort
 msgid "Spa Resort"
-msgstr ""
+msgstr "水療度假中心"
 
 #. module: base
 #. odoo-python
@@ -43378,7 +43379,7 @@ msgstr "贊助商，追蹤，議程，活動新聞"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sport_events
 msgid "Sport Events"
-msgstr ""
+msgstr "體育活動"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sports_club
@@ -43886,19 +43887,19 @@ msgstr "剝離樣式屬性"
 #. module: base
 #: model:ir.module.module,description:base.module_hr_expense_stripe
 msgid "Stripe Issuing integration for expenses"
-msgstr ""
+msgstr "開支整合 Stripe Issuing 功能"
 
 #. module: base
 #: model:ir.module.module,description:base.module_hr_expense_stripe_demo
 msgid ""
 "Stripe Issuing integration for expenses: Demo module for testing and "
 "demonstration purposes"
-msgstr ""
+msgstr "開支整合 Stripe Issuing 功能：用於測試及演示用途的示範模組"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_student_organization
 msgid "Student Organization"
-msgstr ""
+msgstr "學生組織"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_customizations_studio
@@ -43971,7 +43972,7 @@ msgstr "摘要"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_summer_camps
 msgid "Summer Camps"
-msgstr ""
+msgstr "夏令營"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_lang__week_start__7
@@ -44269,7 +44270,7 @@ msgstr "塔卡"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_takeaway_restaurant
 msgid "Takeaway Restaurant"
-msgstr ""
+msgstr "外賣餐廳"
 
 #. module: base
 #: model:res.currency,currency_unit_label:base.WST
@@ -44368,7 +44369,7 @@ msgstr "乍得 - 會計報表"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_team_sports_club
 msgid "Team Sports Club"
-msgstr ""
+msgstr "團隊運動俱樂部"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_hidden
@@ -44716,7 +44717,7 @@ msgstr "向你的聯絡人傳送 WhatsApp 訊息"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_textile_manufacturing
 msgid "Textile Manufacturing"
-msgstr ""
+msgstr "紡織製衣業"
 
 #. module: base
 #: model:res.country,name:base.th
@@ -45508,7 +45509,7 @@ msgstr "貨幣欄位的值不是數字."
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theater
 msgid "Theater"
-msgstr ""
+msgstr "劇院"
 
 #. module: base
 #: model:res.currency,currency_subunit_label:base.BWP
@@ -45535,7 +45536,7 @@ msgstr "主題商店"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_themes
 msgid "Themes Testing Module"
-msgstr ""
+msgstr "主題測試模組"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
@@ -46198,6 +46199,10 @@ msgid ""
 "every\n"
 "    theme on one website."
 msgstr ""
+"此模組協助你快速測試所有 Odoo \n"
+"    設計主題，無需在網站上逐個逐個切換。\n"
+"    它純粹為每個 Odoo 主題建立一個新的網站，然後安裝\n"
+"    個別設計主題。"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_upgrade
@@ -46246,7 +46251,7 @@ msgstr "千位分隔符"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_thrift_store
 msgid "Thrift Store"
-msgstr ""
+msgstr "二手舊貨店"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_lang__week_start__4
@@ -46729,7 +46734,7 @@ msgstr "圖瓦魯"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sms_twilio
 msgid "Twilio SMS"
-msgstr ""
+msgstr "Twilio 短訊"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_auth_totp
@@ -47971,7 +47976,7 @@ msgstr "垂直條形圖"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_veterinary_clinic
 msgid "Veterinary Clinic"
-msgstr ""
+msgstr "獸醫診所"
 
 #. module: base
 #: model:res.country,name:base.vn
@@ -48707,7 +48712,7 @@ msgstr "視窗動作"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_wine_merchant
 msgid "Wine Shop"
-msgstr ""
+msgstr "葡萄酒商店"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_account_withholding_tax
@@ -48896,7 +48901,7 @@ msgstr "是的，我了解此風險"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_yoga_pilates
 msgid "Yoga & Pilates Studio"
-msgstr ""
+msgstr "瑜伽及普拉提練習室"
 
 #. module: base
 #. odoo-python
@@ -49630,7 +49635,7 @@ msgstr "網上學習"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_elearning_platform
 msgid "eLearning Platform"
-msgstr ""
+msgstr "網上學習平台"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_services_expenses

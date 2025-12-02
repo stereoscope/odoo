@@ -170,7 +170,7 @@ class PaymentTransaction(models.Model):
     def _send_refund_request(self):
         """Override of `payment` to send a refund request to Adyen."""
         if self.provider_code != 'adyen':
-            super()._send_refund_request()
+            return super()._send_refund_request()
 
         # Send the refund request to Adyen.
         converted_amount = payment_utils.to_minor_currency_units(
@@ -313,9 +313,9 @@ class PaymentTransaction(models.Model):
         if self.provider_code != 'adyen':
             return super()._extract_amount_data(payment_data)
 
-        # Redirection payments don't have the amount or currency in their payment_data, but
-        # processing them results in a pending transaction anyway.
-        if payment_data.get('action', {}).get('type') == 'redirect':
+        # Redirection payments and 3DS challenges don't have the amount or currency in their
+        # payment_data, but processing them results in a pending transaction anyway.
+        if payment_data.get('action', {}).get('type') in ['redirect', 'threeDS2']:
             return None  # Skip the validation
 
         amount_data = payment_data.get('amount', {})

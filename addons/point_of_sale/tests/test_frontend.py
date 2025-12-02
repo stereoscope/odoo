@@ -221,25 +221,25 @@ class TestPointOfSaleHttpCommon(AccountTestInvoicingHttpCommon):
         })
         line.product_template_value_ids[0].price_extra = 2
 
-        chair_color_attribute = env['product.attribute'].create({
+        cls.chair_color_attribute = env['product.attribute'].create({
             'name': 'Color',
             'display_type': 'color',
             'create_variant': 'no_variant',
         })
-        chair_color_red = env['product.attribute.value'].create({
+        cls.chair_color_red = env['product.attribute.value'].create({
             'name': 'Red',
-            'attribute_id': chair_color_attribute.id,
+            'attribute_id': cls.chair_color_attribute.id,
             'html_color': '#ff0000',
         })
         chair_color_blue = env['product.attribute.value'].create({
             'name': 'Blue',
-            'attribute_id': chair_color_attribute.id,
+            'attribute_id': cls.chair_color_attribute.id,
             'html_color': '#0000ff',
         })
         chair_color_line = env['product.template.attribute.line'].create({
             'product_tmpl_id': cls.configurable_chair.id,
-            'attribute_id': chair_color_attribute.id,
-            'value_ids': [(6, 0, [chair_color_red.id, chair_color_blue.id])]
+            'attribute_id': cls.chair_color_attribute.id,
+            'value_ids': [(6, 0, [cls.chair_color_red.id, chair_color_blue.id])]
         })
         chair_color_line.product_template_value_ids[0].price_extra = 1
 
@@ -262,28 +262,28 @@ class TestPointOfSaleHttpCommon(AccountTestInvoicingHttpCommon):
             'value_ids': [(6, 0, [chair_legs_metal.id, chair_legs_wood.id])]
         })
 
-        chair_fabrics_attribute = env['product.attribute'].create({
+        cls.chair_fabrics_attribute = env['product.attribute'].create({
             'name': 'Fabrics',
             'display_type': 'radio',
             'create_variant': 'no_variant',
         })
         chair_fabrics_leather = env['product.attribute.value'].create({
             'name': 'Leather',
-            'attribute_id': chair_fabrics_attribute.id,
+            'attribute_id': cls.chair_fabrics_attribute.id,
         })
-        chair_fabrics_wool = env['product.attribute.value'].create({
+        cls.chair_fabrics_wool = env['product.attribute.value'].create({
             'name': 'wool',
-            'attribute_id': chair_fabrics_attribute.id,
+            'attribute_id': cls.chair_fabrics_attribute.id,
         })
-        chair_fabrics_other = env['product.attribute.value'].create({
+        cls.chair_fabrics_other = env['product.attribute.value'].create({
             'name': 'Other',
-            'attribute_id': chair_fabrics_attribute.id,
+            'attribute_id': cls.chair_fabrics_attribute.id,
             'is_custom': True,
         })
         env['product.template.attribute.line'].create({
             'product_tmpl_id': cls.configurable_chair.id,
-            'attribute_id': chair_fabrics_attribute.id,
-            'value_ids': [(6, 0, [chair_fabrics_leather.id, chair_fabrics_wool.id, chair_fabrics_other.id])]
+            'attribute_id': cls.chair_fabrics_attribute.id,
+            'value_ids': [(6, 0, [chair_fabrics_leather.id, cls.chair_fabrics_wool.id, cls.chair_fabrics_other.id])]
         })
         chair_color_line.product_template_value_ids[1].is_custom = True
 
@@ -399,6 +399,12 @@ class TestPointOfSaleHttpCommon(AccountTestInvoicingHttpCommon):
                 'applied_on': '0_product_variant',
                 'min_quantity': 1,
                 'product_id': cls.wall_shelf.product_variant_id.id,
+            }), (0, 0, {
+                'compute_price': 'fixed',
+                'fixed_price': 1,
+                'applied_on': '0_product_variant',
+                'min_quantity': 5,
+                'product_id': cls.monitor_stand.product_variant_id.id,
             })],
         })
 
@@ -562,6 +568,12 @@ class TestPointOfSaleHttpCommon(AccountTestInvoicingHttpCommon):
             'available_pricelist_ids': [(4, pricelist.id) for pricelist in all_pricelists],
         })
 
+        cls.printer = cls.env['pos.printer'].create({
+            'name': 'Printer',
+            'printer_type': 'epson_epos',
+            'epson_printer_ip': '0.0.0.0',
+        })
+
         # Set customers
         partners = cls.env['res.partner'].create([
             {'name': 'Partner Test 1'},
@@ -615,7 +627,6 @@ class TestUi(TestPointOfSaleHttpCommon):
         self.env['ir.module.module'].search([('name', '=', 'point_of_sale')], limit=1).state = 'installed'
 
         self.start_tour("/pos/ui/%d" % self.main_pos_config.id, 'pos_pricelist', login="pos_user")
-        self.start_tour("/pos/ui/%d" % self.main_pos_config.id, 'pos_basic_order_01_multi_payment_and_change', login="pos_user")
         self.start_tour("/pos/ui/%d" % self.main_pos_config.id, 'pos_basic_order_02_decimal_order_quantity', login="pos_user")
         self.start_tour("/pos/ui/%d" % self.main_pos_config.id, 'pos_basic_order_03_tax_position', login="pos_user")
         self.start_tour("/pos/ui/%d" % self.main_pos_config.id, 'FloatingOrderTour', login="pos_user")
@@ -649,6 +660,14 @@ class TestUi(TestPointOfSaleHttpCommon):
         self.assertEqual(last_order.lines[0].price_subtotal_incl, 30.0)
         # Check if session name contains config name as prefix
         self.assertEqual(self.main_pos_config.name in last_order.session_id.name, True)
+
+    def test_03_pos_with_lots(self):
+
+        # open a session, the /pos/ui controller will redirect to it
+        self.main_pos_config.with_user(self.pos_user).open_ui()
+
+        self.monitor_stand.tracking = 'lot'
+        self.start_tour("/pos/ui?config_id=%d" % self.main_pos_config.id, 'test_03_pos_with_lots', login="pos_user")
 
     def test_04_product_configurator(self):
         # Making one attribute inactive to verify that it doesn't show
@@ -785,6 +804,7 @@ class TestUi(TestPointOfSaleHttpCommon):
         self.main_pos_config.write({
             'rounding_method': rouding_method.id,
             'cash_rounding': True,
+            'only_round_cash_method': True,
         })
 
         self.main_pos_config.with_user(self.pos_user).open_ui()
@@ -807,48 +827,13 @@ class TestUi(TestPointOfSaleHttpCommon):
         self.main_pos_config.write({
             'rounding_method': rouding_method.id,
             'cash_rounding': True,
+            'only_round_cash_method': True,
         })
 
         self.main_pos_config.with_user(self.pos_user).open_ui()
         self.start_tour("/pos/ui/%d" % self.main_pos_config.id, 'PaymentScreenRoundingDown', login="pos_user")
         self.env["pos.order"].search([('state', '=', 'draft')]).write({'state': 'cancel'})
         self.start_tour("/pos/ui/%d" % self.main_pos_config.id, 'PaymentScreenTotalDueWithOverPayment', login="pos_user")
-
-    def test_rounding_half_up(self):
-        rouding_method = self.env['account.cash.rounding'].create({
-            'name': 'Rounding HALF-UP',
-            'rounding': 0.5,
-            'rounding_method': 'HALF-UP',
-        })
-
-        self.env['product.product'].create({
-            'name': 'Product Test 1.20',
-            'available_in_pos': True,
-            'list_price': 1.2,
-            'taxes_id': False,
-        })
-
-        self.env['product.product'].create({
-            'name': 'Product Test 1.25',
-            'available_in_pos': True,
-            'list_price': 1.25,
-            'taxes_id': False,
-        })
-
-        self.env['product.product'].create({
-            'name': 'Product Test 1.4',
-            'available_in_pos': True,
-            'list_price': 1.4,
-            'taxes_id': False,
-        })
-
-        self.main_pos_config.write({
-            'rounding_method': rouding_method.id,
-            'cash_rounding': True,
-        })
-
-        self.main_pos_config.with_user(self.pos_user).open_ui()
-        self.start_tour("/pos/ui/%d" % self.main_pos_config.id, 'PaymentScreenRoundingHalfUp', login="pos_user")
 
     def test_pos_closing_cash_details(self):
         """Test cash difference *loss* at closing.
@@ -1333,6 +1318,7 @@ class TestUi(TestPointOfSaleHttpCommon):
             'taxes_id': False,
             'available_in_pos': True,
             'pos_categ_ids': [(4, limited_category.id)],
+            'tracking': 'lot',
             'attribute_line_ids': [(0, 0, {
                 'attribute_id': color_attribute.id,
                 'value_ids': [(6, 0, color_attribute.value_ids.ids)]
@@ -1417,6 +1403,36 @@ class TestUi(TestPointOfSaleHttpCommon):
         self.desks_combo.combo_item_ids[1].product_id.pos_categ_ids = [(6, 0, [pos_other_categ.id])]
         self.main_pos_config.with_user(self.pos_user).open_ui()
         self.start_tour("/pos/ui?config_id=%d" % self.main_pos_config.id, 'test_restricted_categories_combo_product', login="pos_user")
+
+    def test_printer_restricts_to_allowed_categories_for_combo(self):
+        setup_product_combo_items(self)
+        self.printer.write({
+            'product_categories_ids': [Command.set(self.env['pos.category'].search([('name', '=', 'Category 2')]).ids)],
+        })
+        self.main_pos_config.write({
+            'is_order_printer': True,
+            'printer_ids': [Command.set(self.printer.ids)],
+        })
+        self.main_pos_config.with_user(self.pos_user).open_ui()
+        self.start_pos_tour('test_printer_restricts_to_allowed_categories_for_combo', login="pos_user")
+
+    def test_printer_not_linked_to_any_combo_category(self):
+        setup_product_combo_items(self)
+        new_category = self.env['pos.category'].create({
+            'name': 'New Category',
+        })
+        self.wall_shelf.write({
+            'pos_categ_ids': [Command.set(new_category.ids)],
+        })
+        self.printer.write({
+            'product_categories_ids': [Command.set(new_category.ids)],
+        })
+        self.main_pos_config.write({
+            'is_order_printer': True,
+            'printer_ids': [Command.set(self.printer.ids)],
+        })
+        self.main_pos_config.with_user(self.pos_user).open_ui()
+        self.start_pos_tour('test_printer_not_linked_to_any_combo_category', login="pos_user")
 
     def test_multi_product_options(self):
         self.pos_user.write({
@@ -1520,6 +1536,9 @@ class TestUi(TestPointOfSaleHttpCommon):
 
     def test_customer_display(self):
         self.start_tour(f"/pos_customer_display/{self.main_pos_config.id}/{self.main_pos_config.access_token}", 'CustomerDisplayTour', login="pos_user")
+
+    def test_customer_display_scroll(self):
+        self.start_tour(f"/pos_customer_display/{self.main_pos_config.id}/{self.main_pos_config.access_token}", 'CustomerDisplayTourScroll', login="pos_user")
 
     def test_customer_display_with_qr(self):
         self.start_tour(f"/pos_customer_display/{self.main_pos_config.id}/{self.main_pos_config.access_token}", 'CustomerDisplayTourWithQr', login="pos_user")
@@ -1651,7 +1670,6 @@ class TestUi(TestPointOfSaleHttpCommon):
         })
         self.env['product.pricelist.item'].create({
             'pricelist_id': sale_10_pl.id,
-            'base': 'pricelist',
             'compute_price': 'percentage',
             'applied_on': '3_global',
             'percent_price': 10,
@@ -1676,27 +1694,6 @@ class TestUi(TestPointOfSaleHttpCommon):
             'ProductComboDiscountTour',
             login="pos_user",
         )
-
-    def test_cash_rounding_payment(self):
-        """Verify than an error popup is shown if the payment value is more precise than the rounding method"""
-        rounding_method = self.env['account.cash.rounding'].create({
-            'name': 'Down 0.10',
-            'rounding': 0.10,
-            'strategy': 'add_invoice_line',
-            'profit_account_id': self.company_data['default_account_revenue'].copy().id,
-            'loss_account_id': self.company_data['default_account_expense'].copy().id,
-            'rounding_method': 'DOWN',
-        })
-
-        self.main_pos_config.write({
-            'cash_rounding': True,
-            'only_round_cash_method': False,
-            'rounding_method': rounding_method.id,
-        })
-
-        self.env['ir.config_parameter'].sudo().set_param('barcode.max_time_between_keys_in_ms', 1)
-        self.main_pos_config.open_ui()
-        self.start_tour("/pos/ui/%d" % self.main_pos_config.id, 'CashRoundingPayment', login="accountman")
 
     def test_product_categories_order(self):
         """ Verify that the order of categories doesnt change in the frontend """
@@ -1901,6 +1898,40 @@ class TestUi(TestPointOfSaleHttpCommon):
 
     def test_product_search(self):
         """Verify that the product search works correctly"""
+        product_with_variant = self.env['product.template'].create({
+            'name': 'Product with Variant',
+            'available_in_pos': True,
+            'list_price': 10,
+            'taxes_id': False,
+            'barcode': '1234567',
+        })
+
+        color_attribute = self.env['product.attribute'].create({
+            'name': 'Color always',
+            'create_variant': 'always',
+            'value_ids': [(0, 0, {
+                'name': 'Red',
+                'sequence': 1,
+            }), (0, 0, {
+                'name': 'Blue',
+                'sequence': 2,
+            })],
+        })
+
+        self.env['product.template.attribute.line'].create({
+            'product_tmpl_id': product_with_variant.id,
+            'attribute_id': color_attribute.id,
+            'value_ids': [(6, 0, color_attribute.value_ids.ids)]
+        })
+        product_with_variant.product_variant_ids[0].write({
+            "barcode": "variant_barcode_1",
+            "default_code": "VARIANT_1"
+        })
+        product_with_variant.product_variant_ids[1].write({
+            "barcode": "variant_barcode_2",
+            "default_code": "VARIANT_2"
+        })
+
         self.env['product.product'].create([
             {
                 'name': 'Test Product 1',
@@ -1926,6 +1957,12 @@ class TestUi(TestPointOfSaleHttpCommon):
             },
             {
                 'name': 'galaxy',
+                'list_price': 100,
+                'taxes_id': False,
+                'available_in_pos': True,
+            },
+            {
+                'name': '1234567890123',
                 'list_price': 100,
                 'taxes_id': False,
                 'available_in_pos': True,
@@ -2772,6 +2809,14 @@ class TestUi(TestPointOfSaleHttpCommon):
         This includes validating the refund order creation, amount, state, and payment processing.
         """
         # Open POS UI with the POS user
+        pricelists = self.env['product.pricelist'].create([
+            {'name': 'Test Pricelist'},
+            {'name': 'Percentage Pricelist'},
+        ])
+        self.main_pos_config.write({
+            'available_pricelist_ids': [Command.set(pricelists.ids)],
+            'pricelist_id': pricelists[0].id,
+        })
         self.main_pos_config.with_user(self.pos_user).open_ui()
 
         # Run the POS tour simulating a partial refund
@@ -2782,6 +2827,12 @@ class TestUi(TestPointOfSaleHttpCommon):
             ('session_id', '=', self.main_pos_config.current_session_id.id)
         ])
         self.assertEqual(len(orders), 2, "Expected two orders: original and refund.")
+        order, refund_order = orders[0], orders[1]
+        self.assertEqual(
+            refund_order.pricelist_id.id,
+            order.pricelist_id.id,
+            "Refund order pricelist should be the original order's pricelist."
+        )
 
         # Perform refund on order and retrieve the resulting draft refund order
         refund_action = orders[1].refund()
@@ -3014,6 +3065,36 @@ class TestUi(TestPointOfSaleHttpCommon):
         self.main_pos_config.with_user(self.pos_user).open_ui()
         self.start_pos_tour('test_cross_exclusion_attribute_values')
 
+    def test_custom_attribute_alone_displayed(self):
+        """
+        Tests that if product configurator will be shown if any of the
+        attributes have a free text field, even if there is only one
+        possible selection for every attributes.
+        """
+        attribute_custom = self.env['product.attribute'].create({
+            'name': 'Custom',
+            'display_type': 'radio',
+            'create_variant': 'no_variant',
+        })
+        attribute_value_custom = self.env['product.attribute.value'].create({
+            'name': 'Custom',
+            'attribute_id': attribute_custom.id,
+            'is_custom': True,
+        })
+        self.test_product_1 = self.env['product.template'].create({
+            'name': 'Only Custom',
+            'available_in_pos': True,
+            'list_price': 10.0,
+            'attribute_line_ids': [
+                Command.create({
+                    'attribute_id': attribute_custom.id,
+                    'value_ids': [Command.set([attribute_value_custom.id])],
+                }),
+            ],
+        })
+        self.main_pos_config.with_user(self.pos_user).open_ui()
+        self.start_pos_tour('test_custom_attribute_alone_displayed')
+
     def test_preset_customer_selection(self):
         self.preset_delivery = self.env['pos.preset'].create({
             'name': 'Delivery',
@@ -3044,6 +3125,104 @@ class TestUi(TestPointOfSaleHttpCommon):
         })
         self.main_pos_config.with_user(self.pos_user).open_ui()
         self.start_pos_tour('test_pos_large_amount_confirmation_dialog')
+
+    def test_product_info_product_inventory(self):
+        """ Test that the product variant inventory info is correctly displayed in the POS. """
+        size_attribute = self.env['product.attribute'].create({
+            'name': 'Size',
+            'value_ids': [
+                Command.create({'name': 'Small'}),
+                Command.create({'name': 'Large'})
+            ],
+            'create_variant': 'always',
+        })
+
+        product_template = self.env['product.template'].create({
+            'name': 'Test Product',
+            'available_in_pos': True,
+            'is_storable': True,
+            'attribute_line_ids': [
+                Command.create({
+                    'attribute_id': size_attribute.id,
+                    'value_ids': [Command.link(id) for id in size_attribute.value_ids.ids]
+                })
+            ]
+        })
+
+        for variant in range(len(product_template.product_variant_ids)):
+            self.env['stock.quant']._update_available_quantity(product_template.product_variant_ids[variant], self.main_pos_config.warehouse_id.lot_stock_id, (variant + 1) * 100)
+            product_template.product_variant_ids[variant].write({'barcode': f'product_variant_{variant}'})
+
+        self.main_pos_config.with_user(self.pos_user).open_ui()
+        self.start_pos_tour('test_product_info_product_inventory')
+
+    def test_add_money_button_with_different_decimal_separator(self):
+        """
+        Tests that the buttons such as +10 or +50 work even in languages such as
+        french that have ',' as a decimal separator.
+        """
+        self.env['res.lang']._activate_lang('fr_BE')
+        self.pos_user.write({'lang': 'fr_BE'})
+        self.start_tour(f"/pos/ui?config_id={self.main_pos_config.id}", 'test_add_money_button_with_different_decimal_separator', login="pos_user")
+
+    def test_sync_from_ui_one_by_one(self):
+        """
+        Sync from UI is now syncing orders one by one.
+        sync_from_ui should be called 6 times in this tour (6 orders created).
+        """
+
+        pos_order = self.env.registry.models['pos.order']
+        sync_counter = {'count': 0}
+
+        @api.model
+        def sync_from_ui_patch(self, orders):
+            sync_counter['count'] += 1
+            return super(pos_order, self).sync_from_ui(orders)
+
+        with patch.object(pos_order, "sync_from_ui", sync_from_ui_patch):
+            self.start_pos_tour("test_sync_from_ui_one_by_one", login="pos_user")
+            self.assertEqual(sync_counter['count'], 6)
+
+    def test_lot_refund_lower_qty(self):
+        product = self.env['product.product'].create({
+            'name': 'Serial Product',
+            'is_storable': True,
+            'tracking': 'serial',
+            'available_in_pos': True,
+        })
+        for sn in ["SN1", "SN2"]:
+            self.env['stock.quant'].create({
+                'product_id': product.id,
+                'inventory_quantity': 1,
+                'location_id': self.env.user._get_default_warehouse_id().lot_stock_id.id,
+                'lot_id': self.env['stock.lot'].create({'name': sn, 'product_id': product.id}).id,
+            }).sudo().action_apply_inventory()
+        self.env['stock.picking.type'].search([('name', '=', 'PoS Orders')]).use_create_lots = False
+
+        self.main_pos_config.with_user(self.pos_user).open_ui()
+        self.start_pos_tour("test_lot_refund_lower_qty")
+
+    def test_exclusion_attribute_values(self):
+        chair_fabrics_other_ptav = self.configurable_chair.attribute_line_ids.filtered(lambda l: l.attribute_id.id == self.chair_fabrics_attribute.id).product_template_value_ids.filtered(lambda v: v.product_attribute_value_id.id == self.chair_fabrics_other.id)
+        chair_fabrics_wool_ptav = self.configurable_chair.attribute_line_ids.filtered(lambda l: l.attribute_id.id == self.chair_fabrics_attribute.id).product_template_value_ids.filtered(lambda v: v.product_attribute_value_id.id == self.chair_fabrics_wool.id)
+        chair_color_red_ptav = self.configurable_chair.attribute_line_ids.filtered(lambda l: l.attribute_id.id == self.chair_color_attribute.id).product_template_value_ids.filtered(lambda v: v.product_attribute_value_id.id == self.chair_color_red.id)
+
+        # Test the exclusion of attribute values
+        self.env['product.template.attribute.exclusion'].create({
+            'product_tmpl_id': self.configurable_chair.id,
+            'product_template_attribute_value_id': chair_color_red_ptav.id,
+            'value_ids': [Command.set([chair_fabrics_other_ptav.id])],
+        })
+
+        # # Test the exclusion of attribute values in the opposite direction
+        self.env['product.template.attribute.exclusion'].create({
+            'product_tmpl_id': self.configurable_chair.id,
+            'product_template_attribute_value_id': chair_fabrics_wool_ptav.id,
+            'value_ids': [Command.set([chair_color_red_ptav.id])],
+        })
+
+        self.main_pos_config.with_user(self.pos_user).open_ui()
+        self.start_pos_tour('test_exclusion_attribute_values')
 
 
 # This class just runs the same tests as above but with mobile emulation

@@ -310,6 +310,16 @@ class TestTimesheet(TestCommonTimesheet):
                 'project_id': False
             })
 
+    def test_favorite_project_id(self):
+        """ Test that user without previous timesheets and without
+        access to the internal project has no favorite project. """
+
+        # make internal project accessible to invited internal users only
+        self.env.company.internal_project_id.privacy_visibility = 'followers'
+
+        favorite_project = self.env['account.analytic.line'].with_user(self.user_employee)._get_favorite_project_id()
+        self.assertFalse(favorite_project, "A user without timesheet and without access to the internal project should have no favorite project.")
+
     def test_recompute_amount_for_multiple_timesheets(self):
         """ Check that amount is recomputed correctly when setting unit_amount for multiple timesheets at once. """
         Timesheet = self.env['account.analytic.line']
@@ -646,6 +656,9 @@ class TestTimesheet(TestCommonTimesheet):
         })
         self.env.company.timesheet_encode_uom_id = self.env.ref('uom.product_uom_day')
         self.assertEqual(project.total_timesheet_time, 1, "Total timesheet time should be 1 day")
+        project.allocated_hours = 0.0
+        panel_data = project.get_panel_data()
+        self.assertEqual(panel_data['buttons'][1]['number'], "1 Days", "Should display '1 Days'")
         self.assertEqual(project.timesheet_encode_uom_id, self.env.company.timesheet_encode_uom_id, "Timesheet encode uom should be the one from the company of the env, since the project has no company.")
 
     def test_unlink_task_with_timesheet(self):
