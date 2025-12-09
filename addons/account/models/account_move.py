@@ -694,7 +694,9 @@ class AccountMove(models.Model):
     invoice_incoterm_id = fields.Many2one(
         comodel_name='account.incoterms',
         string='Incoterm',
-        default=lambda self: self.env.company.incoterm_id,
+        compute='_compute_incoterm',
+        readonly=False,
+        store=True,
         help='International Commercial Terms are a series of predefined commercial '
              'terms used in international transactions.',
     )
@@ -2165,6 +2167,12 @@ class AccountMove(models.Model):
         for move in self:
             move.amount_total_words = move.currency_id.amount_to_text(move.amount_total).replace(',', '')
 
+    @api.depends('company_id', 'move_type')
+    def _compute_incoterm(self):
+        for move in self:
+            if move.move_type.startswith('out_'):
+                move.invoice_incoterm_id = move.company_id.incoterm_id
+
     def _compute_linked_attachment_id(self, attachment_field, binary_field):
         """Helper to retreive Attachment from Binary fields
         This is needed because fields.Many2one('ir.attachment') makes all
@@ -2462,7 +2470,11 @@ class AccountMove(models.Model):
     def _search_journal_group_id(self, operator, value):
         field = 'name' if 'like' in operator else 'id'
         journal_groups = self.env['account.journal.group'].search([(field, operator, value)])
-        return [('journal_id', 'not in', journal_groups.excluded_journal_ids.ids)]
+        return Domain.OR([
+            Domain('journal_id', 'not in', group.excluded_journal_ids.ids)
+            & Domain('journal_id.company_id', '=?', group.company_id.id)
+            for group in journal_groups
+        ])
 
     def _search_reconciled_payment_ids(self, operator, value):
         if operator not in ('in', '='):
