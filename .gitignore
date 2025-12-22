@@ -54,3 +54,4 @@ package.json
 /src/
 /data
 odoo_cli.log
+odoo/addons
