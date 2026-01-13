@@ -605,13 +605,28 @@ registry.category("web_tour.tours").add("test_multiple_preparation_printer_diffe
             Dialog.confirm(),
         ].flat(),
 });
+registry.category("web_tour.tours").add("test_preset_delivery_restaurant", {
+    steps: () =>
+        [
+            Chrome.startPoS(),
+            Dialog.confirm("Open Register"),
+            FloorScreen.clickTable("2"),
+            ProductScreen.clickCustomer("Partner Full"),
+            ProductScreen.clickDisplayedProduct("Coca-Cola", true),
+            ProductScreen.clickControlButton("Cancel Order"),
+            Dialog.cancel(),
+            ProductScreen.isShown(),
+            ProductScreen.clickControlButton("Cancel Order"),
+            Dialog.confirm(),
+            FloorScreen.hasTable("2"),
+        ].flat(),
+});
 
 registry.category("web_tour.tours").add("test_preset_timing_restaurant", {
     steps: () =>
         [
             Chrome.freezeDateTime(1749981600000), // June 15, 2025 - 10:00
             Chrome.startPoS(),
-            Dialog.confirm("Open Register"),
             FloorScreen.clickNewOrder(),
             ProductScreen.clickDisplayedProduct("Coca-Cola"),
             ProductScreen.selectPreset("Eat in", "Takeaway"),
@@ -644,9 +659,19 @@ registry.category("web_tour.tours").add("test_preset_timing_restaurant", {
 registry.category("web_tour.tours").add("test_open_register_with_preset_takeaway", {
     steps: () =>
         [
+            Chrome.freezeDateTime(1749981600000), // June 15, 2025 - 10:00
             Chrome.startPoS(),
             FloorScreen.isShown(),
             FloorScreen.clickTable("5"),
+            Chrome.presetTimingSlotHourNotExists("09:00"),
+            Chrome.selectPresetTimingSlotHour("12:20"),
+            Chrome.presetTimingSlotIs("12:20"),
+            ProductScreen.clickDisplayedProduct("Coca-Cola", true),
+            ProductScreen.clickControlButton("Cancel Order"),
+            Dialog.cancel(),
+            ProductScreen.clickControlButton("Cancel Order"),
+            Dialog.confirm(),
+            FloorScreen.isShown(),
             Chrome.endTour(),
         ].flat(),
 });
@@ -1145,13 +1170,13 @@ registry.category("web_tour.tours").add("test_guest_count_bank_payment", {
         [
             Chrome.startPoS(),
             FloorScreen.clickTable("2"),
+            NumberPopup.enterValue("5"),
+            NumberPopup.isShown("5"),
+            Dialog.confirm(),
             ProductScreen.clickDisplayedProduct("Coca-Cola"),
             Order.hasLine({ productName: "Coca-Cola" }),
             ProductScreen.clickPayButton(false),
             ProductScreen.confirmOrderWarningDialog(),
-            NumberPopup.enterValue("5"),
-            NumberPopup.isShown("5"),
-            Dialog.confirm(),
             PaymentScreen.clickPaymentMethod("Bank"),
             PaymentScreen.clickBackToProductScreen(),
             ProductScreen.isShown(),
