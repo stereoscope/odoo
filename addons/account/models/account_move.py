@@ -4795,7 +4795,10 @@ class AccountMove(models.Model):
         if new_lines := (self.invoice_line_ids - existing_lines):
             new_lines.is_imported = True
             if not existing_lines:
-                self.with_context(default_move_type=self.move_type)._link_bill_origin_to_purchase_orders(timeout=4)
+                try:
+                    self.with_context(default_move_type=self.move_type)._link_bill_origin_to_purchase_orders(timeout=4)
+                except (UserError, ValueError):
+                    _logger.exception("Failed to link bill to purchase order")
 
         if new and res:
             try:
@@ -5536,6 +5539,7 @@ class AccountMove(models.Model):
                     validation_msgs.add(_("The Bill/Refund date is required to validate this document."))
 
         for move in self:
+            move.line_ids._check_constrains_account_id_journal_id()
             if move.state in ['posted', 'cancel']:
                 validation_msgs.add(_('The entry %(name)s (id %(id)s) must be in draft.', name=move.name, id=move.id))
             if not move.line_ids.filtered(lambda line: line.display_type not in ('line_section', 'line_subsection', 'line_note')):
