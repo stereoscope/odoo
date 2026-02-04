@@ -1,0 +1,9 @@
+name = "Gaschler Odoo 19"
+odoo_path = "./odoo"     
+addons_path = [
+  -- "./addons",
+  -- "/path/to/enterprise/addons",
+  -- "/path/to/custom/addons"
+  ".odoo/addons"
+]
+python_path = "/home/fritz/.local/share/nvim/mason/packages/debugpy/venv/bin/python"  -- oder deine venv
