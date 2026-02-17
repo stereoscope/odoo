@@ -136,3 +136,6 @@ Path to logo: ./libs/addons_custom/addons/static/description/icon.png
 
 More information about ideas, conecpts and todo can be found in the obsidan vault at: /home/fritz/Syncthing/Obsidian Vault/Odoo/
 
+# Additional Code Respositories
+
+- Android App for stock_taking can be found at /home/fritz/Documents/Projekte/Gaschler/MobileOdooApp
