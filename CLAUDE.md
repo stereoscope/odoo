@@ -28,19 +28,19 @@ odoo/                       # Core framework
 addons/                     # Community addons (~100 modules)
 libs/                       # Git submodules
   addons-enterprise/        #   Odoo Enterprise (submodule → odoo/enterprise)
-  addons_custom/            #   Custom addons (submodule → stereoscope/odoo_addons)
-    addons/nineteen/        #     Odoo 19 custom modules (gaschler_core, product_pim_icecat, etc.)
   addons-dp/                #   Datenpol addons (submodule → datenpol/odoosh-gaschler)
+    3rd-party-addons        #     Purchased third party addons
+    custom-addons/          #     Odoo 19 custom modules (store, product_eprel, product_brand, product_pim_icecat, etc.)
 ```
 
-The `odoo/addons/` directory contains both core and enterprise modules (enterprise modules are symlinked in). Custom modules live in `libs/addons_custom/addons/nineteen/`.
+The `odoo/addons/` directory contains both core and enterprise modules (enterprise modules are symlinked in via `cli.py link-addons`). Custom modules (stock_taking, store, product_eprel, product_brand, product_pim_icecat, etc.) live in `libs/addons-dp/custom-addons/`.
 
 ## Common Commands
 
 ### Running the Server
 ```bash
 ./odoo-bin                                    # Start server (default command)
-./odoo-bin --addons-path=addons,odoo/addons   # Explicit addons path
+./odoo-bin --addons-path=odoo/addons   # Explicit addons path
 ./odoo-bin -d odoo_19 -u module_name          # Update a specific module
 ./odoo-bin -d odoo_19 -i module_name          # Install a module
 ./odoo-bin shell -d odoo_19                   # Interactive Python shell
@@ -48,6 +48,14 @@ The `odoo/addons/` directory contains both core and enterprise modules (enterpri
 ```
 
 `--dev` flags: `access` (log access errors), `qweb` (compiled XML in errors), `reload` (restart on changes), `replica` (simulate readonly replica), `werkzeug` (HTML debugger), `xml` (read views from source, not DB).
+
+### Linking addons
+
+Making sure all necessary addons are placed in the odoo/addons folder for easier navigation and simplicity
+
+```bash
+./libs/addons_custom/cli.py link-addons ./libs/addons-enterprise ./addons ./libs/addons-dp/custom-addons ./libs/addons-dp/3rd-party-addons ./libs/addons-dp/dp-apps
+```
 
 ### Running Tests
 ```bash
