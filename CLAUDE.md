@@ -134,6 +134,7 @@ Path to logo: ./libs/addons_custom/addons/static/description/icon.png
 - In Odoo 17+, translatable `Char`/`Text` fields are stored as `jsonb` (e.g., `{"en_US": "value"}`). Company-dependent fields also use jsonb.
 - `read_group()` is deprecated since 19.0 — use `_read_group()` instead
 - For bulk inserts (10K+ records), raw SQL with `INSERT...SELECT` avoids ORM cache OOM — call `self.env.invalidate_all()` after
+- **Never guess Odoo field names** — always verify by checking the model source (`grep` for the field definition in the relevant model file under `odoo/addons/` or `addons/`). Field names are often non-obvious (e.g., `group_ids` not `groups_id`, `categ_id` not `category_id`, `company_ids` not `companies`).
 - Import order enforced by ruff: `future → stdlib → third-party → odoo → odoo.addons`
 
 ## Coding Style
