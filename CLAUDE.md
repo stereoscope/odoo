@@ -81,10 +81,7 @@ Making sure all necessary addons are placed in the odoo/addons folder for easier
 Tests always require `-d <database>` and typically `--stop-after-init`. The `--test-enable` flag runs all tests for modules being installed/updated.
 
 ### Linting
-```bash
-ruff check .                  # Lint (config in ruff.toml)
-ruff check --fix .            # Lint with auto-fix
-```
+Ruff is NOT installed in this environment. Follow Odoo coding conventions and PEP 8 manually. Do NOT attempt to run ruff.
 
 ### Other CLI Commands
 ```bash
@@ -124,11 +121,17 @@ module_name/
 
 Path to logo: ./libs/addons_custom/addons/static/description/icon.png
 
-### Test Structure
+### Test Structure — MANDATORY for new modules
+**When creating a new module, ALWAYS write tests.** Every new module must include a `tests/` directory with meaningful unit and integration tests covering the expected scenarios.
+
 - Tests go in `module_name/tests/`, imported in `tests/__init__.py`
-- Base classes: `TransactionCase` (rollback per test), `SingleTransactionCase`, `HttpCase` (browser)
+- Base class: `TransactionCase` (rollback per test) — do NOT use `AccountTestInvoicingCommon` or `TestAccountReportsCommon` as they create a second company which fails due to NOT NULL constraints from installed 3rd-party modules (`product_brand`)
 - Default tags: `standard`, `at_install` — use `@tagged('post_install', '-at_install')` for post-install tests
 - Tag format for `--test-tags`: `[-][tag][/module][:class][.method]`
+- **Odoo 19**: `account.account` has no `company_id` field (multi-company by default) — don't pass it in test data
+- Always run tests after creating them: `.venv/bin/python odoo-bin --test-tags /module_name -d odoo_19 --stop-after-init --http-port=8099`
+- Tests must cover: happy path, edge cases, configuration toggles, and access control where relevant
+- **UI-Tests (HttpCase/Tours)**: Erwägen bei Wizards mit mehreren Schritten, komplexen Form-Interaktionen (Onchange-Ketten, dynamische Sichtbarkeit), POS-Frontend-Logik oder Website-Flows. Nicht nötig für einfache Felder, Standard-Reports oder reine Backend-Logik ohne eigene UI.
 
 ### ORM Key Points
 - In Odoo 17+, translatable `Char`/`Text` fields are stored as `jsonb` (e.g., `{"en_US": "value"}`). Company-dependent fields also use jsonb.
@@ -140,10 +143,18 @@ Path to logo: ./libs/addons_custom/addons/static/description/icon.png
 ## Coding Style
 
 - Follow Odoo coding guidelines and PEP 8
-- Ruff is configured with extensive rules in `ruff.toml` (target: Python 3.10)
+- Ruff is NOT installed — follow conventions manually
 - Line length is NOT enforced (E501 ignored)
 - `printf`-style string formatting is allowed (UP031 ignored)
 - Unused imports in `__init__.py` are allowed (F401 ignored)
+
+## Odoo LSP
+
+Odoo provides a Language Server Protocol (LSP) implementation for IDE integration. It provides autocompletion, go-to-definition, and diagnostics for Odoo Python code (model fields, XML IDs, view inheritance).
+
+- **Repository**: Part of the Odoo IDE tools / VS Code extension
+- **Setup**: Configure via VS Code Odoo extension or standalone LSP pointing to the Odoo source and addons paths
+- **Useful for**: Field name resolution, XML ID validation, model inheritance chains
 
 # Additional Information
 
@@ -158,3 +169,8 @@ Configured for large imports (Icecat taxonomy):
 # Additional Code Repositories
 
 - Android App for stock_taking can be found at /home/fritz/Documents/Projekte/Gaschler/MobileOdooApp
+- **Price Crawler Odoo-Modul**: `/home/fritz/Documents/Projekte/Odoo/odoo_19/libs/addons_custom/addons/product_price_crawler/`
+  - Vollständiges Odoo 19 CE Custom-Modul für AI-gestütztes Price Crawling (Geizhals.at)
+  - Architektur-Plan & Memory: `/home/fritz/.claude/projects/-home-fritz-Documents-Projekte-Gaschler-gaschler-price-crawler/memory/MEMORY.md`
+  - Docker-Setup: `/home/fritz/Documents/Projekte/Odoo/odoo_19/libs/addons_custom/addons/product_price_crawler/docker-compose.crawler.yml`
+  - Alter Spring-Boot-Crawler (wird ersetzt) liegt hier: `/home/fritz/Documents/Projekte/Gaschler/gaschler-price-crawler`
