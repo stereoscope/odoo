@@ -9,7 +9,7 @@ import { _t } from "@web/core/l10n/translation";
 import { SearchBarMenu } from "../search_bar_menu/search_bar_menu";
 import { Component, status, useRef, useState } from "@odoo/owl";
 import { useDropdownState } from "@web/core/dropdown/dropdown_hooks";
-import { hasTouch, isIOS } from "@web/core/browser/feature_detection";
+import { hasTouch } from "@web/core/browser/feature_detection";
 import { Dropdown } from "@web/core/dropdown/dropdown";
 import { DropdownItem } from "@web/core/dropdown/dropdown_item";
 import { useNavigation } from "@web/core/navigation/navigation";
@@ -39,6 +39,8 @@ const FOLDABLE_TYPES = ["properties", "many2one", "many2many"];
 
 let nextItemId = 1;
 const SUB_ITEMS_DEFAULT_LIMIT = 8;
+
+export const DROPDOWN_CLOSE_DELAY = 10;
 
 export class SearchBar extends Component {
     static template = "web.SearchBar";
@@ -667,11 +669,10 @@ export class SearchBar extends Component {
      * @param {InputEvent} ev
      */
     onSearchInput(ev) {
+        clearTimeout(this.searchDropdownCloseTimeout);
+
         if (!hasTouch()) {
             this.searchBarDropdownState.close();
-        }
-        if (isIOS() && !ev.key) {
-            return;
         }
         const query = ev.target.value;
         if (query.trim()) {
@@ -681,8 +682,10 @@ export class SearchBar extends Component {
             }
             this.computeState({ query, expanded: [], subItems: [] });
         } else if (this.items.length) {
-            this.inputDropdownState.close();
-            this.resetState();
+            this.searchDropdownCloseTimeout = setTimeout(() => {
+                this.inputDropdownState.close();
+                this.resetState();
+            }, DROPDOWN_CLOSE_DELAY);
         }
     }
 
